@@ -1,0 +1,503 @@
+<title>Proyecto Interno Alianza Clinical Trainers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+
+<style>
+/* Proyecto interno como web: barra fija, portada, bandas alternas a sangre; texto corrido a 62 caracteres para un justificado sin huecos */
+:root{
+  --void:#070707; --band:#0d0d0c; --panel:#121210; --line:#2a2720; --ivory:#efe9dc; --muted:#a39b8a; --gold:#c9a84c; --gold-soft:rgba(201,168,76,.12); --gold-line:rgba(201,168,76,.35);
+  --red:#c46a5a; --red-soft:rgba(196,106,90,.13);
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif; --caps:"Cinzel",Georgia,serif; --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --measure:62ch; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ivory);font-family:var(--body);font-size:17px;line-height:1.7;hyphens:none;-webkit-hyphens:none}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.container{max-width:1120px;margin:0 auto;padding-inline:24px}
+
+/* Justificado: solo texto corrido con medida suficiente; tarjetas, tablas y móvil a la izquierda */
+.body>p,.body>ul>li,.body>ol>li,.two li,.clause,.alert p,.tl li{text-align:justify;text-justify:inter-word}
+.body>p,.body>ul,.body>ol{max-width:var(--measure)}
+.body>p{margin:0 0 16px}
+.body>ul,.body>ol{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--gold)}
+@media (max-width:640px){.body>p,.body>ul>li,.body>ol>li,.two li,.clause,.alert p,.tl li{text-align:left}}
+
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,7,7,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo svg{width:32px;height:32px}
+.logo span{font-family:var(--caps);letter-spacing:.18em;font-size:13px;color:var(--ivory)}
+.logo b{color:var(--gold);font-weight:600}
+.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--muted);text-decoration:none;font-size:13.5px;white-space:nowrap}
+.links a:hover{color:var(--gold)}
+.tag{flex:none;border:1px solid var(--red);color:var(--red);font-family:var(--caps);font-size:10.5px;letter-spacing:.14em;padding:4px 9px;border-radius:3px}
+@media (max-width:760px){.tag{display:none}}
+
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 85% 20%,rgba(201,168,76,.13),transparent 60%);pointer-events:none}
+.hero .container{position:relative;padding-block:84px 68px;display:grid;gap:24px}
+.stamp{justify-self:start;border:1px solid var(--red);color:var(--red);font-family:var(--caps);font-size:11.5px;letter-spacing:.16em;padding:5px 11px;border-radius:3px}
+.eyebrow{font-family:var(--caps);font-size:12.5px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(42px,7.4vw,84px);line-height:1;margin:0;max-width:16ch;text-wrap:balance}
+h1 em{color:var(--gold);font-weight:500}
+.hero .lead{font-size:clamp(17px,1.9vw,19px);max-width:64ch;margin:0;text-align:justify;text-justify:inter-word}
+@media (max-width:640px){.hero .lead{text-align:left}}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--muted);font-size:14px}
+
+.band{padding-block:80px;border-bottom:1px solid var(--line);scroll-margin-top:64px}
+.band.alt{background:var(--band)}
+.head{display:grid;gap:10px;margin-bottom:30px;max-width:820px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.04;margin:0;text-wrap:balance}
+h3{font-family:var(--caps);font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:40px 0 14px}
+h4{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.1;margin:0 0 6px}
+.point{font-size:19.5px;line-height:1.6;border-left:2px solid var(--gold);padding-left:18px;margin:0 0 30px;max-width:var(--measure);text-align:justify;text-justify:inter-word}
+@media (max-width:640px){.point{text-align:left}}
+strong{font-weight:600}
+.muted{color:var(--muted);font-size:14.5px}
+code{font-size:.9em;color:var(--gold)}
+
+.alert{border:1px solid var(--red);background:var(--red-soft);border-radius:8px;padding:16px 20px;margin:0 0 24px;max-width:820px}
+.alert p{margin:0}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 30px}
+.kpi{padding:22px;border-right:1px solid var(--line);background:var(--panel)}
+.kpi:last-child{border-right:0}
+.kpi b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--gold);line-height:1}
+.kpi span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(2){border-right:0}.kpi:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:0 0 24px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px;line-height:1.55}
+th,td{text-align:left;vertical-align:top;padding:14px 18px;border-bottom:1px solid var(--line)}
+th{font-family:var(--caps);font-weight:500;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);background:var(--void)}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.hl td{background:var(--gold-soft)}
+
+.lines{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:0 0 20px}
+.line{border:1px solid var(--line);border-radius:8px;padding:20px;background:var(--panel);display:grid;gap:8px;align-content:start}
+.line .k{font-family:var(--caps);font-size:11px;letter-spacing:.15em;color:var(--gold)}
+.line h4{margin:0}
+.line p{font-size:14.5px;color:var(--muted);margin:0}
+.line.main{border-color:var(--gold);background:linear-gradient(180deg,var(--gold-soft),transparent 70%),var(--panel)}
+@media (max-width:980px){.lines{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.lines{grid-template-columns:1fr}}
+
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;counter-reset:f;margin:0 0 24px}
+.step{border:1px solid var(--line);border-radius:8px;padding:18px 16px;background:var(--panel);font-size:14.5px;line-height:1.5;overflow-wrap:anywhere}
+.step::before{counter-increment:f;content:counter(f);display:block;font-family:var(--display);font-size:32px;color:var(--gold);line-height:1;margin-bottom:10px}
+.step.key{border-color:var(--gold);background:var(--gold-soft)}
+@media (max-width:980px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.flow{grid-template-columns:1fr}}
+
+.tl{border-left:1px solid var(--gold-line);margin-left:8px;max-width:900px}
+.tl>div{padding:0 0 30px 32px;position:relative;display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:28px}
+.tl>div::before{content:"";position:absolute;left:-7px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--void);border:2px solid var(--gold)}
+.tl>div.gate::before{background:var(--gold);transform:rotate(45deg);border-radius:2px}
+.tl .d{grid-row:span 2;font-family:var(--caps);font-size:12.5px;letter-spacing:.12em;color:var(--gold);padding-top:4px}
+.tl h4{margin:0 0 4px}
+.tl ul{margin:0;padding-left:20px;color:var(--muted);font-size:15.5px}
+@media (max-width:760px){.tl>div{grid-template-columns:1fr}.tl .d{grid-row:auto}}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 20px}
+.two>div{min-width:0;border:1px solid var(--line);border-radius:8px;padding:22px 22px 10px;background:var(--panel)}
+.two h3{margin-top:0}
+.two ul{padding-left:20px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+
+.doc{border:1px solid var(--line);border-radius:8px;background:var(--panel);margin:0 0 12px;max-width:900px}
+.doc summary{cursor:pointer;padding:18px 22px;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:var(--display);font-size:22px;font-weight:600}
+.doc summary::-webkit-details-marker{display:none}
+.doc summary::after{content:"+";color:var(--gold);font-family:var(--body);font-size:22px}
+.doc[open] summary::after{content:"–"}
+.doc summary small{display:block;font-family:var(--body);font-weight:400;color:var(--muted);font-size:13.5px;margin-top:2px}
+.doc .dbody{padding:0 22px 20px}
+.txt{white-space:pre-wrap;font-size:15px;line-height:1.7;border-left:2px solid var(--gold);padding:14px 18px;background:var(--void);border-radius:0 6px 6px 0;margin:0 0 12px;text-align:left;max-width:none}
+.copy{background:none;border:1px solid var(--gold);color:var(--gold);font:500 13px var(--body);padding:7px 14px;border-radius:4px;cursor:pointer}
+.copy:hover{background:var(--gold-soft)}
+
+.checks{list-style:none;padding-left:0}
+.checks li{padding-left:30px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border:1px solid var(--gold);border-radius:3px}
+
+footer{padding-block:34px;color:var(--muted);font-size:13px}
+footer .container{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<header class="topbar"><div class="container"><a class="logo" href="#inicio" aria-label="Closer Search, inicio"><svg viewBox="0 0 48 48" aria-hidden="true"><polygon points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5" fill="none" stroke="#c9a84c" stroke-width="2"/><path d="M15 24.5l6 6 12-13" fill="none" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>CLOSER <b>SEARCH</b></span></a><nav class="links" aria-label="Secciones"><a href="#decision">Decisión</a><a href="#socio">El socio</a><a href="#arquitectura">Arquitectura</a><a href="#economia">Economía</a><a href="#negociacion">Negociación</a><a href="#equipo">Equipo</a><a href="#calendario">Calendario</a><a href="#riesgos">Riesgos</a><a href="#legal">Revisión legal</a><a href="#escritos">Escritos</a><a href="#kpis">KPIs</a><a href="#pasos">Próximos pasos</a></nav><span class="tag">INTERNO</span></div></header>
+<main id="inicio"><section class="hero"><div class="container"><span class="stamp">DOCUMENTO INTERNO · NO COMPARTIR CON CLINICAL TRAINERS</span><span class="eyebrow">Proyecto de alianza estratégica</span><h1>Alianza con <em>Clinical Trainers</em>: plan completo</h1><p class="lead">Todo lo necesario para negociar, firmar y poner en marcha la colaboración: estrategia, economía real, límites de negociación, equipo, calendario, riesgos, revisión legal de la carta de acuerdo y todos los escritos listos para usar.</p><div class="meta"><span>Versión 1 · 30 de septiembre de 2026</span><span>Responsable: David Martínez, CEO</span><span>www.closersearch.com</span></div></div></section>
+<section class="band" id="decision"><div class="container"><div class="head"><span class="eyebrow">Sección 01</span><h2>Resumen y decisión</h2></div><div class="body">
+  <p class="point">Proponemos a Clinical Trainers un convenio marco no exclusivo de 12 meses con cinco líneas de colaboración. Arrancamos con un piloto de 3 clínicas en noviembre y firmamos antes del 30 de octubre de 2026.</p>
+  <div class="kpis">
+    <div class="kpi"><b>500 €</b><span>pago único a Clinical Trainers por clínica que firme y siga activa 30 días</span></div>
+    <div class="kpi"><b>20%</b><span>comisión que paga la clínica, solo por venta</span></div>
+    <div class="kpi"><b>12%</b><span>queda para Closer Search tras el 8% del closer</span></div>
+    <div class="kpi"><b>50 €/mes</b><span>Club Closer Search, tras el sello Premium</span></div>
+  </div>
+  <p><strong>Por qué nos conviene:</strong> nos abre un vertical de clientes de alto ticket (clínicas) sin prospección en frío, nos da una cantera continua de closers con formación universitaria para todos nuestros proyectos, llena el Club y añade ingresos por cada alumno que llevemos al curso.</p>
+  <p><strong>Qué no damos:</strong> exclusividad, sello automático, contenido formativo, licencia del método ni acceso a nuestras cifras de venta o márgenes.</p>
+</div></div></section>
+<section class="band alt" id="socio"><div class="container"><div class="head"><span class="eyebrow">Sección 02</span><h2>El socio: Clinical Trainers</h2></div><div class="body">
+  <p class="point">Centro de formación de Madrid especializado en salud, con red de clínicas de prácticas y un curso universitario de closer que sirve para cualquier sector.</p>
+  <div class="tbl"><table>
+    <tr><th>Dato</th><th>Lo que sabemos</th><th>Pendiente de confirmar</th></tr>
+    <tr><td>Actividad</td><td>Formación en odontología, veterinaria, estética, salud y MBA; consultoría de gestión y marketing a clínicas</td><td>Volumen de clientes de consultoría</td></tr>
+    <tr><td>Presencia</td><td>Madrid (sede), Valencia; alumnos también en Sevilla e Ibiza</td><td>Sedes activas</td></tr>
+    <tr><td>Curso clave</td><td>Curso de Especialización Universitaria en Ventas High Ticket, 700 h, online, certificado por EUNEIZ; genérico, no solo salud</td><td>Precio, alumnos, titulados y calendario de promociones</td></tr>
+    <tr><td>Red de clínicas</td><td>Clínicas de prácticas; dicen que el 90% de sus alumnos encuentra trabajo tras las prácticas</td><td>Número de clínicas y perfil</td></tr>
+    <tr><td>Título</td><td>Título propio de la Universidad de Vitoria-Gasteiz (EUNEIZ), no oficial</td><td>Autorización de EUNEIZ para que un tercero lo mencione</td></tr>
+  </table></div>
+  <p class="muted">Fuentes: <a href="https://clinicaltrainers.es/cursos/curso-de-especializacion-universitaria-en-ventas-high-ticket/" target="_blank" rel="noopener">ficha del curso</a> y <a href="https://clinicaltrainers.es/sobre-nosotros/" target="_blank" rel="noopener">sobre nosotros</a>. El número de alumnos no es público: el curso está en marcha.</p>
+</div></div></section>
+<section class="band" id="arquitectura"><div class="container"><div class="head"><span class="eyebrow">Sección 03</span><h2>Arquitectura de la alianza</h2></div><div class="body">
+  <p class="point">Cinco líneas que se refuerzan entre sí: las clínicas dan ingresos, el curso da talento, el talento llena el Club y el Club devuelve alumnos al curso.</p>
+  <div class="lines">
+    <div class="line main"><span class="k">LÍNEA 1</span><h4>Canal de clínicas</h4><p>Clinical Trainers presenta clínicas; Closer Search les monta el equipo de cierre a comisión.</p></div>
+    <div class="line"><span class="k">LÍNEA 2</span><h4>Talento certificado</h4><p>Titulados con prioridad en El Filtro de los 6 y doble acreditación.</p></div>
+    <div class="line"><span class="k">LÍNEA 3</span><h4>Salida profesional</h4><p>Closer Search en la ficha del curso y apartado propio en nuestra web.</p></div>
+    <div class="line"><span class="k">LÍNEA 4</span><h4>Club Closer Search</h4><p>50 €/mes tras el sello; primer mes gratis para titulados.</p></div>
+    <div class="line"><span class="k">LÍNEA 5</span><h4>Alumnos al curso</h4><p>Llevamos alumnos al curso y cobramos el 10% de cada matrícula.</p></div>
+  </div>
+
+  <h3>Línea 1 · Flujo de una clínica derivada</h3>
+  <div class="flow">
+    <div class="step">Clinical Trainers presenta la clínica por escrito a david@closersearch.com</div>
+    <div class="step">Diagnóstico de encaje de Closer Search en 7 días</div>
+    <div class="step key"><strong>Firma del contrato con la clínica; a los 30 días activa, Clinical Trainers cobra 500 €</strong></div>
+    <div class="step">Selección y formación del equipo en 15 días</div>
+    <div class="step">Cierre de tratamientos; la clínica paga el 20% por venta</div>
+    <div class="step">Informe mensual a la clínica y revisión con Clinical Trainers</div>
+  </div>
+  <p><strong>Clínica ideal:</strong> recibe pacientes o leads de forma constante, tiene presupuestos sin aceptar o sin seguimiento, y al menos un tratamiento de alto ticket (implantes, ortodoncia invisible, medicina estética, planes veterinarios). Acepta que el closer acompaña la decisión del paciente y nunca sustituye al criterio clínico.</p>
+  <p><strong>Clínica derivada:</strong> presentada por escrito por Clinical Trainers, sin relación previa con Closer Search y con contrato firmado en los 90 días siguientes.</p>
+
+  <h3>Líneas 2 y 3 · Camino del titulado</h3>
+  <ol>
+    <li>Se titula en el curso (genérico: vale para infoproductos, empresas de IA, inmobiliaria, formación, servicios o salud).</li>
+    <li>Solicita evaluación con su título: prioridad en El Filtro de los 6, sin coste.</li>
+    <li>Si lo supera, recibe el sello Premium: doble acreditación.</li>
+    <li>Firma contrato mercantil como autónomo y entra en proyectos según encaje.</li>
+    <li>Si no lo supera, recibe feedback y puede volver a presentarse.</li>
+  </ol>
+  <p>Apartado web: <code>certificacion.html</code> en www.closersearch.com ("Fórmate con título universitario"), publicado solo con el convenio firmado.</p>
+
+  <h3>Línea 4 · Club Closer Search</h3>
+  <p>50 € al mes, activable solo tras el sello. Primer mes gratis para titulados del curso. Quien trabaja en un proyecto la tiene descontada de la primera comisión del mes; sin comisión ese mes, no se cobra ni se acumula.</p>
+  <div class="tbl"><table>
+    <tr><th>Beneficio</th><th>Origen</th></tr>
+    <tr class="hl"><td>Acceso directo al curso universitario de closer con descuento especial</td><td>Alianza (a negociar)</td></tr>
+    <tr><td>Prioridad en todos los procesos de selección</td><td>Closer Search</td></tr>
+    <tr><td>Proyectos del vertical de clínicas, reservados a miembros</td><td>Alianza</td></tr>
+    <tr><td>Guías de Ventas por sector e informes ejecutivos de cada producto</td><td>Closer Search</td></tr>
+    <tr><td>Revisión de llamadas y role plays mensuales (Dirección de Formación)</td><td>Closer Search</td></tr>
+    <tr><td>Mentoría mensual en directo con el CEO</td><td>Closer Search</td></tr>
+    <tr><td>Sesión trimestral de Clinical Trainers sobre el sector salud</td><td>Alianza (a proponer)</td></tr>
+    <tr><td>Descuento en el resto del catálogo de Clinical Trainers</td><td>Alianza (a negociar)</td></tr>
+    <tr><td>Perfil verificado en www.closersearch.com</td><td>Closer Search</td></tr>
+    <tr><td>Canal exclusivo de ofertas, La Sala y plaza preferente en La Gran Sala</td><td>Closer Search</td></tr>
+    <tr><td>Informe trimestral personal de resultados</td><td>Closer Search</td></tr>
+  </table></div>
+
+  <h3>Línea 5 · Alumnos al curso</h3>
+  <p>Cobramos a Clinical Trainers el 10% de cada matrícula hecha con nuestro código o enlace (miembros del Club, candidatos que no superan el filtro, La Sala). Se paga tras los 14 días de garantía del curso y, a plazos, sobre lo cobrado. Liquidación trimestral. Siempre informamos al alumno de que tenemos un acuerdo comercial con Clinical Trainers.</p>
+</div></div></section>
+<section class="band alt" id="economia"><div class="container"><div class="head"><span class="eyebrow">Sección 04</span><h2>Economía completa</h2></div><div class="body">
+  <div class="alert"><p><strong>Solo interno.</strong> Clinical Trainers solo ve su pago de 500 € por clínica firmada. Nunca enseñamos el 8% del closer ni nuestro 12%.</p></div>
+  <h3>Reparto por venta (tratamiento de 3.000 €, hipótesis)</h3>
+  <div class="tbl"><table>
+    <tr><th>Concepto</th><th>%</th><th>Importe</th></tr>
+    <tr><td>Comisión que paga la clínica</td><td class="n">20%</td><td class="n">600 €</td></tr>
+    <tr><td>Closer</td><td class="n">8%</td><td class="n">240 €</td></tr>
+    <tr class="hl"><td><strong>Closer Search</strong> (cubre también setter y dirección de proyectos, reparto interno pendiente)</td><td class="n"><strong>12%</strong></td><td class="n"><strong>360 €</strong></td></tr>
+  </table></div>
+  <p><strong>Pago a Clinical Trainers:</strong> 500 € únicos por clínica que firme contrato y siga activa 30 días. Se recupera con la segunda venta de esa clínica (360 € + 360 €). A partir de ahí todo el 12% es nuestro durante la vida del contrato.</p>
+
+  <h3>Escenarios a 12 meses (10 tratamientos al mes por clínica)</h3>
+  <div class="tbl"><table>
+    <tr><th>Escenario</th><th>Clínicas</th><th>Ventas / mes</th><th>Closer Search / mes</th><th>Closers / mes</th><th>Pagado a CT (total)</th></tr>
+    <tr><td>Prudente</td><td class="n">3</td><td class="n">90.000 €</td><td class="n">10.800 €</td><td class="n">7.200 €</td><td class="n">1.500 €</td></tr>
+    <tr class="hl"><td><strong>Base</strong></td><td class="n">8</td><td class="n">240.000 €</td><td class="n"><strong>28.800 €</strong></td><td class="n">19.200 €</td><td class="n">4.000 €</td></tr>
+    <tr><td>Optimista</td><td class="n">15</td><td class="n">450.000 €</td><td class="n">54.000 €</td><td class="n">36.000 €</td><td class="n">7.500 €</td></tr>
+  </table></div>
+
+  <h3>Club y alumnos</h3>
+  <div class="tbl"><table>
+    <tr><th>Fuente</th><th>Prudente</th><th>Base</th><th>Optimista</th></tr>
+    <tr><td>Club (50 €/mes)</td><td class="n">20 miembros · 1.000 €/mes</td><td class="n">50 · 2.500 €/mes</td><td class="n">100 · 5.000 €/mes</td></tr>
+    <tr><td>Comisión por alumno (curso de unos 1.400 €, al 10% = 140 € por alumno)</td><td class="n">2 alumnos/mes · 280 €/mes</td><td class="n">5 · 700 €/mes</td><td class="n">10 · 1.400 €/mes</td></tr>
+  </table></div>
+  <p class="muted">Comisión por alumno: 10% de la matrícula, unos 140 € por alumno. Si el curso se paga a plazos, cobramos sobre lo que Clinical Trainers haya cobrado. Hipótesis a validar en el piloto: ticket medio, cierres por clínica y ritmo de altas. Los gastos fijos de Closer Search (unos 300 €/mes) no cambian con la alianza; el coste real es tiempo de dirección y selección.</p>
+</div></div></section>
+<section class="band" id="negociacion"><div class="container"><div class="head"><span class="eyebrow">Sección 05</span><h2>Límites de negociación</h2></div><div class="body">
+  <p class="point">Sabemos qué pedimos, hasta dónde cedemos y qué no se toca. Todo lo marcado como "no negociable" se defiende o no hay acuerdo.</p>
+  <div class="tbl"><table>
+    <tr><th>Punto</th><th>Propuesta</th><th>Podemos ceder a</th><th>Línea roja</th></tr>
+    <tr><td>Pago por clínica</td><td>500 € cuando la clínica cumple 30 días activa</td><td>Hasta 600 €, o 300 € al firmar + 300 € tras la primera venta</td><td>Nunca % sobre ventas ni acceso a importes</td></tr>
+    <tr><td>Momento del pago</td><td>A los 30 días de la firma, con la clínica activa</td><td>250 € al firmar + 250 € a los 30 días</td><td>Nunca antes de firmar</td></tr>
+    <tr><td>Comisión por alumno</td><td>10% de la matrícula (unos 140 € sobre 1.400 €)</td><td>Cantidad fija equivalente, unos 140 € por alumno</td><td>No bajar del 10%</td></tr>
+    <tr><td>Descuento Club en el curso</td><td>20%</td><td>10%</td><td>—</td></tr>
+    <tr><td>Duración</td><td>12 meses renovables</td><td>6 meses de piloto + 12</td><td>—</td></tr>
+    <tr><td>Exclusividad</td><td>Ninguna</td><td>—</td><td>No negociable</td></tr>
+    <tr><td>Sello Premium</td><td>Se gana con el filtro</td><td>Prioridad en la cola</td><td>Nunca automático por el título</td></tr>
+    <tr><td>Contenido formativo</td><td>No damos clases ni licencia</td><td>Sesión puntual en La Gran Sala</td><td>No licencia del método</td></tr>
+    <tr><td>Relación con la clínica</td><td>Solo Closer Search</td><td>Revisión trimestral a tres</td><td>Clinical Trainers no interviene en la operativa</td></tr>
+    <tr><td>Uso del título</td><td>Con autorización escrita</td><td>—</td><td>Solo cuando sea cierto</td></tr>
+  </table></div>
+</div></div></section>
+<section class="band alt" id="equipo"><div class="container"><div class="head"><span class="eyebrow">Sección 06</span><h2>Equipo y responsabilidades</h2></div><div class="body">
+  <div class="tbl"><table>
+    <tr><th>Área</th><th>Responsable</th><th>Qué hace en la alianza</th></tr>
+    <tr><td>Dirección</td><td>David Martínez, CEO</td><td>Negocia, firma, relación con Clinical Trainers, comité de seguimiento</td></tr>
+    <tr><td>Dirección de Proyectos</td><td>Patricia Rubio</td><td>Diagnóstico de clínicas, montaje y dirección de equipos, informes mensuales</td></tr>
+    <tr><td>Gestión de Talento</td><td>María Infante</td><td>Evaluación de titulados, sello Premium, cartera de talento</td></tr>
+    <tr><td>Dirección de Formación</td><td>Por designar</td><td>Club, role plays, revisión de llamadas, Guías de Ventas por sector</td></tr>
+    <tr><td>Área Legal</td><td>Elena Crespo</td><td>Convenio, contratos con clínicas, protección de datos, publicidad sanitaria</td></tr>
+    <tr><td>Marketing y Contenido</td><td>Gerard Villar</td><td>Anuncio, página certificacion.html, posts, La Gran Sala edición salud</td></tr>
+  </table></div>
+</div></div></section>
+<section class="band" id="calendario"><div class="container"><div class="head"><span class="eyebrow">Sección 07</span><h2>Calendario</h2></div><div class="body">
+  <p class="point">Firma antes del 30 de octubre, piloto de noviembre a enero y evaluación a finales de enero de 2027.</p>
+  <div class="tl">
+    <div><span class="d">1 – 7 OCT 2026</span><h4>Envío y reunión</h4><ul><li>Enviar la propuesta a Clinical Trainers (escrito 1)</li><li>Reunión con guion (escrito 2) y 8 preguntas</li><li>Email de seguimiento en 24 h (escrito 3)</li></ul></div>
+    <div><span class="d">8 – 14 OCT</span><h4>Cierre de condiciones</h4><ul><li>Respuestas de Clinical Trainers y cifras del curso</li><li>Acordar pago por clínica, comisión por alumno y descuentos</li></ul></div>
+    <div><span class="d">15 – 28 OCT</span><h4>Carta de acuerdo</h4><ul><li>Carta de acuerdo (en la propuesta para Clinical Trainers)</li><li>Revisión de Legal de ambas partes</li></ul></div>
+    <div class="gate"><span class="d">ANTES DEL 30 OCT</span><h4>Firma del convenio</h4><ul><li>Firma Closer Search Consulting SL (en constitución), representada por su administrador único</li></ul></div>
+    <div><span class="d">2 – 15 NOV</span><h4>Lanzamiento</h4><ul><li>Anuncio conjunto (escritos 4 y 5) y ficha del curso (escrito 6)</li><li>Publicar certificacion.html</li><li>Clinical Trainers envía el email a sus clínicas (escrito 7)</li><li>Diagnóstico de las 3 clínicas del piloto (escrito 9)</li></ul></div>
+    <div><span class="d">16 – 30 NOV</span><h4>Arranque del piloto</h4><ul><li>Contratos con las clínicas (pago de 500 € por cada una a los 30 días activa)</li><li>Selección de closers, Guía de Ventas del tratamiento e informe ejecutivo</li></ul></div>
+    <div><span class="d">DIC 2026 – ENE 2027</span><h4>Piloto en marcha</h4><ul><li>Comité de seguimiento mensual con Clinical Trainers</li><li>Primeros titulados en el filtro y altas en el Club</li></ul></div>
+    <div class="gate"><span class="d">29 ENE 2027</span><h4>Evaluación del piloto</h4><ul><li>Puerta: ventas en al menos 2 de las 3 clínicas</li></ul></div>
+    <div><span class="d">FEB – JUN 2027</span><h4>Consolidación</h4><ul><li>Derivación abierta a toda la red y nuevas sedes</li><li>La Gran Sala, edición salud (marzo 2027)</li><li>Página "Closers para clínicas" en la web</li></ul></div>
+    <div class="gate"><span class="d">OCT 2027</span><h4>Revisión anual y renovación</h4><ul><li>Resultados, ajuste de condiciones y renovación</li></ul></div>
+  </div>
+</div></div></section>
+<section class="band alt" id="riesgos"><div class="container"><div class="head"><span class="eyebrow">Sección 08</span><h2>Riesgos y mitigación</h2></div><div class="body">
+  <div class="tbl"><table>
+    <tr><th>Riesgo</th><th>Impacto</th><th>Mitigación</th></tr>
+    <tr><td>Clínica firma y se va enseguida</td><td>Pérdida de 500 €</td><td>Pago solo si la clínica sigue activa 30 días; diagnóstico previo obligatorio</td></tr>
+    <tr><td>Red de clínicas menor de lo esperado</td><td>Menos ingresos</td><td>Pedir cifras antes de firmar; piloto de 3</td></tr>
+    <tr><td>Clínicas cuentan a Clinical Trainers que pagan un 20%</td><td>Presión para subir su parte</td><td>Su pago es por resultado de derivación; no es un secreto, solo no mostramos el desglose</td></tr>
+    <tr><td>Pocos titulados</td><td>Líneas 2 y 4 lentas</td><td>Nada del acuerdo depende de un mínimo de titulados</td></tr>
+    <tr><td>Venta sanitaria agresiva</td><td>Reputación y legal</td><td>Cláusula de criterio clínico, método consultivo, mensajes validados por la clínica</td></tr>
+    <tr><td>Mal uso del título o de EUNEIZ</td><td>Publicidad engañosa</td><td>Textos autorizados y cláusula de marca</td></tr>
+    <tr><td>Conflicto con su consultoría de marketing</td><td>Roces con la clínica</td><td>Ellos marketing; nosotros cierre</td></tr>
+    <tr><td>Cesión ilegal si una clínica pide "una persona todo el día"</td><td>Legal</td><td>Siempre servicio dirigido por Closer Search, nunca horas de una persona</td></tr>
+  </table></div>
+</div></div></section>
+<section class="band" id="legal"><div class="container"><div class="head"><span class="eyebrow">Sección 09</span><h2>Revisión legal de la carta de acuerdo</h2></div><div class="body">
+  <div class="alert"><p>Revisión hecha por el comité con criterio de Legal. No sustituye el asesoramiento de un abogado: Elena Crespo (área Legal) debe validar la carta antes de enviarla, y el gestor debe confirmar la parte fiscal.</p></div>
+  <p class="point">La carta recoge todas las condiciones de la propuesta y es coherente con ella. Se han corregido 3 puntos durante la revisión y quedan 7 por validar antes de firmar.</p>
+
+  <h3>Correcto</h3>
+  <div class="tbl"><table>
+    <tr><th>Estipulación</th><th>Comprobación</th></tr>
+    <tr><td>2 · No exclusividad</td><td>Clara y recíproca</td></tr>
+    <tr><td>3 y 4 · Clínica derivada y 500 €</td><td>Definición objetiva, plazo de 90 días, pago condicionado a 30 días de servicio activo, con IVA y contra factura</td></tr>
+    <tr><td>5 · Criterio clínico</td><td>El closer no diagnostica ni recomienda; la clínica valida los mensajes sanitarios</td></tr>
+    <tr><td>7 · Titulados</td><td>El sello depende solo de la evaluación; se descarta expresamente el empleo garantizado</td></tr>
+    <tr><td>10 · 10% por alumno</td><td>Devengo tras la garantía, sobre lo cobrado, cuota a cuota; transparencia ante el alumno</td></tr>
+    <tr><td>11 · Marca y título</td><td>Uso limitado, sin presentar a Closer Search como acreditada; garantía de autorización de EUNEIZ a cargo de Clinical Trainers</td></tr>
+    <tr><td>13 a 17 · Datos, confidencialidad, personal, duración, independencia</td><td>Cláusulas estándar completas</td></tr>
+    <tr><td>Partes</td><td>Firma Closer Search Consulting SL (en constitución), representada por David Martínez Varés como administrador único, sin CIF en el texto</td></tr>
+  </table></div>
+
+  <h3>Corregido durante la revisión</h3>
+  <ul>
+    <li><strong>Estipulación 4:</strong> se define qué es un servicio "activo" (contrato vigente y sin aviso de terminación), para evitar discusiones sobre los 30 días.</li>
+    <li><strong>Estipulación 16:</strong> se aclara que una clínica presentada antes de terminar el acuerdo y que firme dentro de los 90 días también genera los 500 €.</li>
+    <li><strong>Estipulación 18:</strong> se añade la validez de la firma electrónica.</li>
+  </ul>
+
+  <h3>Pendiente de validar antes de firmar</h3>
+  <div class="tbl"><table>
+    <tr><th>#</th><th>Punto</th><th>Quién</th></tr>
+    <tr><td>1</td><td>Porcentajes de descuento para el Club (estipulación 9)</td><td>David, en la reunión</td></tr>
+    <tr><td>2</td><td>Copia por escrito de la autorización de EUNEIZ para mencionar el título</td><td>Clinical Trainers</td></tr>
+    <tr><td>3</td><td>Fiscalidad: IVA de las facturas cruzadas y quién factura mientras la SL no tenga CIF</td><td>Luis, el gestor</td></tr>
+    <tr><td>4</td><td>Consentimiento para comunicaciones comerciales a alumnos y candidatos (RGPD y ley de servicios de la sociedad de la información)</td><td>Elena Crespo</td></tr>
+    <tr><td>5</td><td>Contrato tipo con las clínicas, alineado con la estipulación 5 (criterio clínico y publicidad sanitaria)</td><td>Elena Crespo</td></tr>
+    <tr><td>6</td><td>Datos de las partes y jurisdicción (Barcelona propuesta)</td><td>Ambas partes</td></tr>
+    <tr><td>7</td><td>Firma de la SL en constitución: confirmar con el gestor que el administrador puede firmar en nombre de la sociedad en formación y que la sociedad asumirá el acuerdo al inscribirse; si la escritura no está firmada antes del acuerdo, valorar firmar después de constituirla</td><td>Luis, el gestor, y Elena Crespo</td></tr>
+  </table></div>
+</div></div></section>
+<section class="band alt" id="escritos"><div class="container"><div class="head"><span class="eyebrow">Sección 10</span><h2>Escritos listos para usar</h2></div><div class="body">
+  <p class="point">Diez textos, en el orden en que se usan. Cambia lo que va entre corchetes.</p>
+
+  <details class="doc" open><summary><span>1 · Email de envío de la propuesta<small>A Clinical Trainers · 1 oct</small></span></summary><div class="dbody"><p class="txt">Asunto: Propuesta de colaboración Closer Search × Clinical Trainers
+
+Hola [Nombre]:
+
+Gracias por la conversación del otro día. Como quedamos, te envío nuestra propuesta de colaboración.
+
+En resumen, proponemos cinco líneas de trabajo conjunto: vuestras clínicas cierran más tratamientos con nuestros equipos, vuestros titulados acceden con prioridad a nuestros procesos de selección, Closer Search se convierte en salida profesional del curso de ventas high ticket, nuestros miembros del Club acceden al curso con condiciones especiales y os llevamos nuevos alumnos.
+
+Para Clinical Trainers no supone ninguna inversión: nosotros ponemos la selección, la dirección y la operativa, y vosotros recibís 500 € por cada clínica que firme con nosotros.
+
+¿Te va bien que lo revisemos juntos esta semana? Te propongo [día] a las [hora] o [día] a las [hora].
+
+Un saludo,
+
+David Martínez
+CEO y Fundador · Closer Search
+www.closersearch.com · +34 663 347 696</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>2 · Guion de la reunión<small>45 minutos · 1ª semana de octubre</small></span></summary><div class="dbody"><p class="txt">1. APERTURA (5 min)
+"Gracias por el tiempo. El objetivo de hoy es ver si la propuesta encaja con vosotros y resolver las dudas que tenemos. Si al final vemos que tiene sentido, os preparamos el convenio."
+
+2. SU SITUACIÓN (10 min) — escuchar antes de presentar
+- ¿Qué buscáis para el curso de ventas en los próximos 12 meses?
+- ¿Qué os piden las clínicas de vuestra red que hoy no les podéis dar?
+
+3. LA PROPUESTA (15 min)
+Las cinco líneas, empezando por el canal de clínicas y el pago de 500 € por clínica firmada.
+
+4. LAS 8 PREGUNTAS (10 min)
+1) ¿Cuántos alumnos tiene el curso, cuántos titulados hay y cada cuánto sale una promoción?
+2) ¿Cuántas clínicas tiene vuestra red de prácticas y cuántas asesoráis?
+3) ¿Tenéis autorización de EUNEIZ para que un tercero mencione el título y su logo?
+4) ¿Qué 3 clínicas propondríais para el piloto?
+5) ¿Os encaja el pago de 500 € por clínica que firme?
+6) ¿Qué descuento ofrecéis a los miembros del Club en el curso y en el resto del catálogo?
+7) ¿Os encaja pagar el 10% de cada matrícula que os llevemos?
+8) ¿Podéis indicar en vuestra ficha que el curso vale para cualquier sector?
+
+5. CIERRE (5 min)
+"Con esto te preparo la carta de acuerdo definitiva en 10 días. ¿Quién de vuestro lado lo revisa, y fijamos ya la fecha de firma antes del 30 de octubre?"</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>3 · Email de seguimiento tras la reunión<small>A Clinical Trainers · en 24 h</small></span></summary><div class="dbody"><p class="txt">Asunto: Resumen de la reunión y próximos pasos
+
+Hola [Nombre]:
+
+Gracias por la reunión de ayer. Te resumo lo que acordamos:
+
+- [Acuerdo 1]
+- [Acuerdo 2]
+- [Acuerdo 3]
+
+Quedan pendientes por vuestra parte: [datos del curso / clínicas del piloto / autorización de EUNEIZ].
+
+Por nuestra parte, te enviaré la carta de acuerdo definitiva el [fecha], para firmar antes del 30 de octubre.
+
+Un saludo,
+David Martínez · Closer Search</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>4 · Post de anuncio en LinkedIn<small>Closer Search · tras la firma</small></span></summary><div class="dbody"><p class="txt">En Closer Search seguimos construyendo el mejor talento de cierre de alto ticket.
+
+Hoy anunciamos nuestro acuerdo de colaboración con Clinical Trainers.
+
+Qué significa:
+→ Los alumnos del Curso de Especialización Universitaria en Ventas High Ticket, certificado por la Universidad de Vitoria-Gasteiz (EUNEIZ), tienen acceso prioritario a nuestros procesos de selección.
+→ Las clínicas de su red pueden contar con equipos de cierre que solo cobran cuando venden.
+→ Los miembros del Club Closer Search acceden al curso con condiciones especiales.
+
+Formación universitaria, validación profesional y proyectos reales. Todo en el mismo camino.
+
+Más información en www.closersearch.com
+
+#ventas #highticket #closers #formación
+
+Aviso: contenido elaborado con ayuda de inteligencia artificial y revisado por el equipo de Closer Search.</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>5 · Post de anuncio en Instagram<small>@closersearch · tras la firma</small></span></summary><div class="dbody"><p class="txt">Nueva alianza 🤝 Closer Search × Clinical Trainers
+
+¿Quieres formarte como closer con título universitario y trabajar en proyectos reales?
+
+Los alumnos del Curso de Especialización Universitaria en Ventas High Ticket (EUNEIZ) tienen acceso prioritario a nuestros procesos de selección.
+
+Un título para cualquier venta de alto ticket: infoproductos, tecnología e IA, inmobiliaria, formación, salud.
+
+Toda la info en el enlace de la bio.
+
+Aviso: contenido elaborado con ayuda de inteligencia artificial y revisado por el equipo de Closer Search.</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>6 · Texto para la ficha del curso<small>Para que Clinical Trainers lo publique</small></span></summary><div class="dbody"><p class="txt">Salida profesional
+Al finalizar el curso, tendrás acceso prioritario a los procesos de selección de Closer Search, consultora especializada en equipos de cierre de alto ticket. Quien supere su evaluación obtiene además el sello Premium de Closer Search y puede trabajar en proyectos reales de cualquier sector: infoproductos, tecnología e IA, inmobiliaria, formación o salud.</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>7 · Email de Clinical Trainers a su red de clínicas<small>Plantilla para que la envíen ellos</small></span></summary><div class="dbody"><p class="txt">Asunto: Cierra más tratamientos: nueva colaboración para nuestras clínicas
+
+Hola [Nombre]:
+
+En Clinical Trainers hemos cerrado un acuerdo con Closer Search, una consultora especializada en equipos de cierre de alto ticket.
+
+Muchas clínicas presentan buenos presupuestos que el paciente no llega a aceptar o que se quedan sin seguimiento. Closer Search monta y dirige un equipo que acompaña al paciente hasta la decisión, con un método consultivo y respetando siempre el criterio clínico.
+
+Lo más importante: la clínica solo paga una comisión cuando se cierra un tratamiento. Sin cuotas fijas ni pagos por adelantado.
+
+Si te interesa, responde a este email y te pondremos en contacto para un diagnóstico sin coste.
+
+Un saludo,
+[Nombre] · Clinical Trainers</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>8 · Mensaje a alumnos y titulados<small>Para el campus de Clinical Trainers</small></span></summary><div class="dbody"><p class="txt">¿Estás terminando el Curso de Especialización Universitaria en Ventas High Ticket?
+
+Gracias al acuerdo con Closer Search, al titularte tienes acceso prioritario a su evaluación de talento, El Filtro de los 6. Si la superas, obtienes el sello Premium, accedes a sus procesos de selección para proyectos reales y puedes entrar en el Club Closer Search con el primer mes gratis.
+
+Solicita tu evaluación en www.closersearch.com</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>9 · Primer contacto con una clínica derivada<small>Closer Search · tras la presentación de Clinical Trainers</small></span></summary><div class="dbody"><p class="txt">Asunto: Diagnóstico para [nombre de la clínica] · de parte de Clinical Trainers
+
+Hola [Nombre]:
+
+Soy David Martínez, CEO de Closer Search. [Contacto de Clinical Trainers] me ha comentado que podría interesaros mejorar la aceptación de presupuestos en la clínica.
+
+Te propongo una llamada de 30 minutos para hacer un diagnóstico sin coste: veremos cuántos presupuestos presentáis, cuántos se aceptan y dónde se quedan los demás. Si vemos que podemos ayudaros, os explicamos cómo trabajamos; si no, os lo diremos igual.
+
+Solo cobramos una comisión cuando se cierra un tratamiento.
+
+¿Te va bien [día] a las [hora]?
+
+Un saludo,
+David Martínez · Closer Search
+www.closersearch.com · +34 663 347 696</p><button class="copy" type="button">Copiar</button></div></details>
+
+  <details class="doc"><summary><span>10 · Mensaje interno al equipo<small>WhatsApp del equipo · tras la firma</small></span></summary><div class="dbody"><p class="txt">Equipo, buenas noticias: hemos firmado la alianza con Clinical Trainers.
+
+Qué cambia para nosotros:
+- Nuevo vertical de clínicas: Patri lidera los diagnósticos del piloto (3 clínicas en noviembre).
+- Titulados del curso de ventas con prioridad en el filtro: María organiza las evaluaciones.
+- Club: primer mes gratis para titulados con sello.
+- Comunicación: solo con los textos autorizados. Nunca "empleo garantizado" ni "todos nuestros closers titulados".
+
+Os paso el calendario y las responsabilidades en el documento interno.</p><button class="copy" type="button">Copiar</button></div></details>
+</div></div></section>
+<section class="band" id="kpis"><div class="container"><div class="head"><span class="eyebrow">Sección 11</span><h2>Indicadores</h2></div><div class="body">
+  <div class="tbl"><table>
+    <tr><th>KPI</th><th>Objetivo del piloto (nov – ene)</th><th>Objetivo a 12 meses</th></tr>
+    <tr><td>Clínicas presentadas</td><td class="n">5</td><td class="n">15</td></tr>
+    <tr><td>Clínicas firmadas</td><td class="n">3</td><td class="n">8</td></tr>
+    <tr><td>Clínicas con ventas</td><td class="n">2 de 3</td><td class="n">7 de 8</td></tr>
+    <tr><td>Tasa de aceptación de presupuestos</td><td>Se fija en cada diagnóstico</td><td>Mejora sobre la inicial</td></tr>
+    <tr><td>Titulados evaluados / con sello</td><td>Medir</td><td>Medir por promoción</td></tr>
+    <tr><td>Miembros del Club</td><td class="n">10</td><td class="n">50</td></tr>
+    <tr><td>Alumnos llevados al curso</td><td>Medir</td><td>Medir</td></tr>
+  </table></div>
+</div></div></section>
+<section class="band alt" id="pasos"><div class="container"><div class="head"><span class="eyebrow">Sección 12</span><h2>Próximos pasos</h2></div><div class="body">
+  <ul class="checks">
+    <li>Enviar la propuesta externa a Clinical Trainers (escrito 1) · 1 oct</li>
+    <li>Reunión con guion y 8 preguntas · antes del 7 oct</li>
+    <li>Pasar la carta de acuerdo a Legal · 15 oct</li>
+    <li>Firma · antes del 30 oct</li>
+    <li>Publicar certificacion.html y anuncio · 2 – 15 nov</li>
+    <li>Arranque del piloto con 3 clínicas · 16 nov</li>
+    <li>Evaluación del piloto · 29 ene 2027</li>
+  </ul>
+</div></div></section>
+</main>
+<footer><div class="container"><span>Closer Search · Documento interno · 30 de septiembre de 2026</span><span>david@closersearch.com · +34 663 347 696 · www.closersearch.com</span></div></footer>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentElement.querySelector('.txt');
+    var ok=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar';},1600);};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(t);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Seleccionado';};
+    try{navigator.clipboard.writeText(t.textContent).then(ok,sel);}catch(e){sel();}
+  });
+});
+</script>
