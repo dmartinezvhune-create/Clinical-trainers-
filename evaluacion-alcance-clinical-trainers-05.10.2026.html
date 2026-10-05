@@ -1,0 +1,618 @@
+<title>Alcance Alianza Clinical Trainers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+/* Informe de comité como web: barra fija, portada con veredicto, bandas; texto corrido a 62ch para justificar sin huecos */
+:root{
+  --void:#070707; --band:#0d0d0c; --panel:#121210; --line:#2a2720; --ivory:#efe9dc; --muted:#a39b8a; --gold:#c9a84c; --gold-soft:rgba(201,168,76,.12); --gold-line:rgba(201,168,76,.35);
+  --green:#8fb07a; --green-soft:rgba(143,176,122,.14); --amber:#d6a24a; --amber-soft:rgba(214,162,74,.14); --red:#c46a5a; --red-soft:rgba(196,106,90,.14);
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif; --caps:"Cinzel",Georgia,serif; --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --measure:62ch; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ivory);font-family:var(--body);font-size:17px;line-height:1.7;hyphens:none;-webkit-hyphens:none}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.container{max-width:1120px;margin:0 auto;padding-inline:24px}
+.prose p,.prose li,.point{text-align:justify;text-justify:inter-word}
+.prose p{max-width:var(--measure);margin:0 0 16px}
+.prose ul,.prose ol{max-width:var(--measure);margin:0 0 16px;padding-left:22px}
+li{margin-bottom:8px} li::marker{color:var(--gold)}
+@media (max-width:640px){.prose p,.prose li,.point{text-align:left}}
+
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,7,7,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo svg{width:32px;height:32px}
+.logo span{font-family:var(--caps);letter-spacing:.18em;font-size:13px;color:var(--ivory)}
+.logo b{color:var(--gold);font-weight:600}
+.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--muted);text-decoration:none;font-size:13.5px;white-space:nowrap}
+.links a:hover{color:var(--gold)}
+.tag{flex:none;border:1px solid var(--red);color:var(--red);font-family:var(--caps);font-size:10.5px;letter-spacing:.14em;padding:4px 9px;border-radius:3px}
+@media (max-width:760px){.tag{display:none}}
+
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 85% 15%,rgba(201,168,76,.14),transparent 60%);pointer-events:none}
+.hero .container{position:relative;padding-block:80px 64px;display:grid;gap:22px}
+.eyebrow{font-family:var(--caps);font-size:12.5px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,7vw,80px);line-height:1;margin:0;max-width:17ch;text-wrap:balance}
+h1 em{color:var(--gold);font-weight:500}
+.verdict{border:1px solid var(--gold);border-radius:10px;padding:24px 28px;background:linear-gradient(135deg,rgba(201,168,76,.16),rgba(201,168,76,.03));max-width:860px}
+.verdict p{margin:0;font-size:18.5px;line-height:1.65;text-align:justify;text-justify:inter-word}
+@media (max-width:640px){.verdict p{text-align:left}}
+.figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.figures div{padding:20px;border-right:1px solid var(--line);background:rgba(18,18,16,.6)}
+.figures div:last-child{border-right:0}
+.figures b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.figures span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px}
+@media (max-width:760px){.figures{grid-template-columns:repeat(2,minmax(0,1fr))}.figures div:nth-child(2){border-right:0}.figures div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.band{padding-block:80px;border-bottom:1px solid var(--line);scroll-margin-top:64px}
+.band.alt{background:var(--band)}
+.head{display:grid;gap:10px;margin-bottom:30px;max-width:820px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.04;margin:0;text-wrap:balance}
+h2 em{color:var(--gold);font-weight:500}
+h3{font-family:var(--caps);font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:40px 0 14px}
+h4{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.1;margin:0}
+.point{font-size:19.5px;line-height:1.6;border-left:2px solid var(--gold);padding-left:18px;margin:0 0 30px;max-width:var(--measure)}
+.muted{color:var(--muted);font-size:14.5px}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:0 0 24px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:15px;line-height:1.55}
+th,td{text-align:left;vertical-align:top;padding:14px 18px;border-bottom:1px solid var(--line)}
+th{font-family:var(--caps);font-weight:500;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);background:var(--void)}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+th.n{text-align:right}
+tr.total td{background:var(--gold-soft);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.hi{background:var(--green-soft);color:var(--green)} .mid{background:var(--amber-soft);color:var(--amber)} .lo{background:var(--red-soft);color:var(--red)}
+
+.rank{display:grid;gap:12px}
+.r{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,260px);gap:20px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:18px 22px;background:var(--panel)}
+.r.top{border-color:var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent 70%),var(--panel)}
+.r .pos{font-family:var(--display);font-size:42px;color:var(--gold);line-height:1}
+.r p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold)}
+.bar-l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+@media (max-width:760px){.r{grid-template-columns:44px minmax(0,1fr)}.r .meter{grid-column:1 / -1}}
+
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.m{border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--panel);display:grid;gap:10px;align-content:start;min-width:0}
+.m .who{display:flex;align-items:center;gap:14px}
+.m .av{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--caps);color:var(--gold);font-size:13px;flex:none}
+.m .role{color:var(--muted);font-size:13.5px}
+.m .score{margin-left:auto;font-family:var(--display);font-size:30px;color:var(--gold);font-variant-numeric:tabular-nums}
+.m .say{font-family:var(--display);font-style:italic;font-size:20px;line-height:1.4;border-left:2px solid var(--gold);padding-left:14px;margin:0}
+.m ul{margin:0;padding-left:20px;font-size:15.5px}
+.m.opt{border-color:rgba(143,176,122,.6)} .m.opt .av,.m.opt .score{border-color:var(--green);color:var(--green)} .m.opt .say{border-color:var(--green)}
+.m.real{border-color:rgba(214,162,74,.6)} .m.real .av,.m.real .score{border-color:var(--amber);color:var(--amber)} .m.real .say{border-color:var(--amber)}
+.m.crit{border-color:rgba(196,106,90,.6)} .m.crit .av,.m.crit .score{border-color:var(--red);color:var(--red)} .m.crit .say{border-color:var(--red)}
+@media (max-width:860px){.board{grid-template-columns:1fr}}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.two>div{min-width:0;border:1px solid var(--line);border-radius:8px;padding:22px 22px 8px;background:var(--panel)}
+.two h3{margin-top:0}
+.two ul{padding-left:20px;font-size:15.5px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+
+.asks{counter-reset:a;display:grid;gap:12px;max-width:900px}
+.asks div{counter-increment:a;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.asks div::before{content:counter(a);font-family:var(--display);font-size:32px;color:var(--gold);line-height:1}
+.asks p{margin:2px 0 0;color:var(--muted);font-size:15.5px}
+
+
+/* Perfiles */
+.profiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pf{border:1px solid var(--line);border-radius:10px;background:var(--panel);display:grid;align-content:start;min-width:0;overflow:hidden}
+.pf .top{padding:22px 22px 16px;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.pf .k{font-family:var(--caps);font-size:11.5px;letter-spacing:.15em;color:var(--gold)}
+.pf h4{font-size:27px}
+.pf .for{color:var(--muted);font-size:14.5px;margin:0}
+.pf dl{margin:0;display:grid}
+.pf dl div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:12px 22px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55}
+.pf dl div:last-child{border-bottom:0}
+.pf dt{font-family:var(--caps);font-size:11px;letter-spacing:.12em;color:var(--gold);padding-top:3px}
+.pf dd{margin:0}
+.pf.main{border-color:var(--gold)}
+@media (max-width:860px){.profiles{grid-template-columns:1fr}}
+@media (max-width:480px){.pf dl div{grid-template-columns:1fr;gap:2px}}
+.ideal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ideal>div{border-top:1px solid var(--gold-line);padding-top:16px;min-width:0}
+.ideal ul{margin:0;padding-left:20px;font-size:15.5px}
+@media (max-width:860px){.ideal{grid-template-columns:1fr}}
+
+/* Plan formativo */
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:10px}
+.opt{border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--panel);display:grid;gap:8px;align-content:start;min-width:0}
+.opt.main{border-color:var(--gold);background:linear-gradient(180deg,var(--gold-soft),transparent 70%),var(--panel)}
+.opt .k{font-family:var(--caps);font-size:11.5px;letter-spacing:.15em;color:var(--gold)}
+.opt p{margin:0;color:var(--muted);font-size:15px}
+.opt .h{font-size:14px;color:var(--ivory)}
+@media (max-width:860px){.opts{grid-template-columns:1fr}}
+.weeks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wk{display:grid;grid-template-columns:70px minmax(0,1fr);gap:16px;border:1px solid var(--line);border-radius:8px;padding:16px 18px;background:var(--panel)}
+.wk b{font-family:var(--display);font-size:30px;color:var(--gold);line-height:1}
+.wk span{display:block;font-family:var(--caps);font-size:10.5px;letter-spacing:.14em;color:var(--muted);margin-top:4px}
+.wk h4{font-size:21px;margin-bottom:4px}
+.wk p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.wk.key{border-color:var(--gold)}
+@media (max-width:760px){.weeks{grid-template-columns:1fr}}
+
+/* Capa "web potente" */
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;width:0;background:var(--gold);z-index:30}
+.hero .container{padding-block:96px 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(46px,8vw,96px);line-height:.96;max-width:12ch}
+.hero .lead{font-size:clamp(18px,2.1vw,21px);max-width:52ch;margin:0;text-align:left}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 22px;border-radius:4px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--gold);white-space:nowrap}
+.btn.solid{background:var(--gold);color:#0a0a0a}
+.btn.ghost{color:var(--gold)}
+.dial{position:relative;max-width:300px;width:100%;justify-self:center;aspect-ratio:1}
+.dial svg{width:100%;height:100%;display:block}
+.dial .val{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.dial .val b{font-family:var(--display);font-size:clamp(64px,9vw,96px);line-height:.9;color:var(--gold);font-weight:600}
+.dial .val span{font-family:var(--caps);font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:8px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.dial{max-width:220px;justify-self:start}}
+.verdict{margin-top:8px}
+
+body{counter-reset:sec}
+.band{counter-increment:sec}
+.band .head{position:relative}
+.band .head::before{content:counter(sec,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:clamp(70px,10vw,120px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--gold-line);margin-bottom:6px;display:block}
+.band.alt{background:radial-gradient(70% 60% at 100% 0%,rgba(201,168,76,.06),transparent 60%),var(--band)}
+
+.eco-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:18px}
+.eco-wrap svg{display:block;width:100%;min-width:780px;height:auto}
+.eco-legend{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:16px;color:var(--muted);font-size:14px}
+.eco-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:middle}
+
+/* Justificado sin estirar */
+.just,.band p,.band li,.hero .lead,.verdict p,.m .say,.pf dd,.via p,.tbl.just td:last-child{text-align:justify;text-justify:inter-word;text-align-last:left;word-spacing:-.01em}
+.band .head h2,.band h3,.band h4,.eyebrow,.pill,.lbl,.figures span,.bar-l,.eco-legend,.muted.left,.tbl td,.tbl th{text-align-last:auto}
+.tbl td,.tbl th{text-align:left}
+.tbl td.n,.tbl th.n{text-align:right}
+.tbl.just td:last-child{text-align:justify}
+.figures{grid-template-columns:repeat(2,minmax(0,1fr))}
+.figures div{display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--line)}
+.figures div:nth-child(2n){border-right:0}
+.figures div:nth-last-child(-n+2){border-bottom:0}
+.figures b{flex:none;min-width:3.6ch}
+.figures span{margin-top:0;font-size:15px}
+.vias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.via{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.via:first-child{border-color:var(--gold)}
+.via-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 16px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.via-top h4{font-size:24px}
+.via-tags{display:flex;align-items:center;gap:12px}
+.when{font-family:var(--caps);font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.via-body{display:grid;gap:14px;padding:20px 24px}
+.via-body p{margin:4px 0 0;font-size:15.5px;line-height:1.6}
+.lbl{font-family:var(--caps);font-size:10.5px;letter-spacing:.15em;color:var(--gold)}
+.pf dl div{grid-template-columns:100px minmax(0,1fr)}
+.opts{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt p{font-size:15.5px;line-height:1.6}
+.ideal{grid-template-columns:repeat(3,minmax(0,1fr))}
+.m ul,.two ul,.ideal ul{font-size:15.5px}
+@media (max-width:980px){.ideal,.opts{grid-template-columns:1fr}}
+@media (max-width:860px){.vias{grid-template-columns:1fr}.figures{grid-template-columns:1fr}.figures div{border-right:0}.figures div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.figures div:last-child{border-bottom:0}}
+/* En móvil la columna es demasiado estrecha para justificar sin huecos: alineado a la izquierda */
+@media (max-width:640px){.just,.band p,.band li,.hero .lead,.verdict p,.m .say,.pf dd,.via p,.tbl.just td:last-child{text-align:left}}
+
+/* Reajuste de diseño para justificar sin huecos */
+.container{max-width:1240px}
+.just,.band p,.band li,.hero .lead,.verdict p,.m .say,.pf dd,.via p{text-wrap:pretty}
+.hero .lead{max-width:60ch}
+.verdict{max-width:960px}
+.opts{grid-template-columns:1fr;gap:12px}
+.opts .opt{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);column-gap:36px;align-items:start;padding:22px 26px}
+.opts .opt .k{grid-column:1}
+.opts .opt h4{grid-column:1}
+.opts .opt p{grid-column:2;grid-row:1 / span 3;font-size:16px}
+.opts .opt p.h{grid-column:2;grid-row:auto;color:var(--gold);font-size:14px}
+.ideal{grid-template-columns:1fr;gap:0}
+.ideal>div{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:28px;padding:18px 0;border-top:1px solid var(--gold-line)}
+.ideal>div h4{margin:0!important}
+.ideal ul{columns:1}
+.ideal li{break-inside:avoid}
+@media (max-width:860px){.opts .opt{display:grid;grid-template-columns:1fr}.opt p,.opts .opt p.h{grid-column:1;grid-row:auto}.ideal>div{grid-template-columns:1fr;gap:10px}.ideal ul{columns:1}}
+
+/* Comité en filas anchas */
+.board{grid-template-columns:1fr;gap:14px}
+.m{grid-template-columns:minmax(0,1fr);padding:24px 28px}
+.m .say{font-size:21px}
+.m ul{columns:1}
+/* Perfiles: ficha a la izquierda, datos a la derecha */
+.profiles{grid-template-columns:1fr}
+.pf{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.pf .top{border-bottom:0;border-right:1px solid var(--line);align-content:start}
+.pf dl div{grid-template-columns:130px minmax(0,1fr)}
+/* Vías: título a la izquierda, contenido a la derecha */
+.vias{grid-template-columns:1fr;gap:12px}
+.via{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+.via-top{flex-direction:column;align-items:flex-start;justify-content:flex-start;border-bottom:0;border-right:1px solid var(--line)}
+@media (max-width:860px){.pf,.via{grid-template-columns:1fr}.pf .top,.via-top{border-right:0;border-bottom:1px solid var(--line)}}
+footer{padding-block:34px;color:var(--muted);font-size:13px}
+footer .container{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="topbar"><div class="container">
+  <a class="logo" href="#inicio" aria-label="Closer Search"><svg viewBox="0 0 48 48" aria-hidden="true"><polygon points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5" fill="none" stroke="#c9a84c" stroke-width="2"/><path d="M15 24.5l6 6 12-13" fill="none" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>CLOSER <b>SEARCH</b></span></a>
+  <nav class="links" aria-label="Secciones"><a href="#ecosistema">Mapa</a><a href="#alcance">Alcance</a><a href="#ranking">Ranking</a><a href="#numeros">Números</a><a href="#comite">Comité</a><a href="#cualitativo">Más allá del dinero</a><a href="#perfiles">Perfiles</a><a href="#formacion">Formación</a><a href="#riesgos">Límites</a><a href="#martes">Para el martes</a></nav>
+  <span class="tag">INTERNO</span>
+</div></header>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<main id="inicio">
+<section class="hero"><div class="container">
+  <div class="hero-grid">
+    <div style="display:grid;gap:22px">
+      <span class="eyebrow">Comité de estrategia · 5 de octubre de 2026</span>
+      <h1>Una alianza que abre <em>todo un sector</em></h1>
+      <p class="lead">Evaluación del alcance del acuerdo con Clinical Trainers y de cuánto puede beneficiar a Closer Search: clientes, talento, Club y formación.</p>
+      <div class="btns"><a class="btn solid" href="#ecosistema">Ver el mapa</a><a class="btn ghost" href="#martes">Lo que hay que cerrar</a></div>
+    </div>
+    <div class="dial" aria-label="Nota media del comité: 8,4 sobre 10">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="86" fill="none" stroke="var(--line)" stroke-width="10"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-dasharray="453.9 540.4" transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--gold-line)" stroke-width="1" stroke-dasharray="2 6"/>
+      </svg>
+      <div class="val"><b>8,4</b><span>NOTA DEL COMITÉ</span></div>
+    </div>
+  </div>
+  <div class="verdict"><p><strong>Veredicto del comité:</strong> la alianza ha pasado de ser un acuerdo con una escuela a ser una puerta de entrada a dos redes del sector de la formación: AEEN (91 escuelas de negocio) y ANCYPEL (unas 130 entidades de e-learning), en las dos como asociada. Para Closer Search puede convertirse en el principal canal de clientes del próximo año. El límite real no está en la demanda, sino en vuestra capacidad para formar equipos de closers al ritmo que lleguen los clientes.</p></div>
+  <div class="figures">
+    <div><b>8,4</b><span>nota media del comité sobre 10</span></div>
+    <div><b>~220</b><span>centros y escuelas al alcance a través de Inés</span></div>
+    <div><b>186.000 €</b><span>margen bruto estimado año 1, escenario base</span></div>
+    <div><b>20–30</b><span>closers necesarios en el escenario base</span></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="ecosistema"><div class="container">
+  <div class="head"><span class="eyebrow">El mapa</span><h2>Cómo fluye <em>el valor</em></h2></div>
+  <p class="point">Inés, como CEO de Clinical Trainers y asociada de AEEN y ANCYPEL, conecta cuatro fuentes con Closer Search. Cada una se convierte en una forma de ingreso o de talento.</p>
+  <div class="eco-wrap">
+    <svg viewBox="0 0 1000 440" role="img" aria-label="Mapa de la alianza: fuentes, Clinical Trainers y lo que recibe Closer Search">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--gold)"/></marker></defs>
+      <text x="20" y="28" font-family="Cinzel,Georgia,serif" font-size="12" letter-spacing="2" fill="var(--muted)">FUENTES</text>
+      <text x="400" y="28" font-family="Cinzel,Georgia,serif" font-size="12" letter-spacing="2" fill="var(--muted)">PUENTE</text>
+      <text x="700" y="28" font-family="Cinzel,Georgia,serif" font-size="12" letter-spacing="2" fill="var(--muted)">CLOSER SEARCH RECIBE</text>
+      <g font-family="DM Sans,system-ui,sans-serif">
+        <g><rect x="20" y="50" width="250" height="74" rx="8" fill="var(--void)" stroke="var(--gold)" stroke-width="1.5"/><text x="38" y="80" font-size="17" font-weight="600" fill="var(--ivory)">AEEN</text><text x="38" y="104" font-size="13.5" fill="var(--muted)">91 escuelas de negocio</text></g>
+        <g><rect x="20" y="144" width="250" height="74" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="38" y="174" font-size="17" font-weight="600" fill="var(--ivory)">ANCYPEL</text><text x="38" y="198" font-size="13.5" fill="var(--muted)">~130 centros de e-learning</text></g>
+        <g><rect x="20" y="238" width="250" height="74" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="38" y="268" font-size="17" font-weight="600" fill="var(--ivory)">Red de clínicas</text><text x="38" y="292" font-size="13.5" fill="var(--muted)">y empresas de cualquier sector</text></g>
+        <g><rect x="20" y="332" width="250" height="74" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="38" y="362" font-size="17" font-weight="600" fill="var(--ivory)">Curso de ventas</text><text x="38" y="386" font-size="13.5" fill="var(--muted)">EUNEIZ · 980 € para closers</text></g>
+
+        <g><rect x="380" y="150" width="240" height="150" rx="10" fill="rgba(201,168,76,.12)" stroke="var(--gold)" stroke-width="2"/><text x="500" y="200" text-anchor="middle" font-size="20" font-weight="600" fill="var(--ivory)">Clinical Trainers</text><text x="500" y="226" text-anchor="middle" font-size="14" fill="var(--muted)">Inés · CEO</text><text x="500" y="252" text-anchor="middle" font-size="13" fill="var(--gold)">Asociada de AEEN y ANCYPEL</text></g>
+
+        <g><rect x="700" y="50" width="280" height="60" rx="8" fill="var(--void)" stroke="var(--gold)" stroke-width="1.5"/><text x="718" y="76" font-size="15.5" font-weight="600" fill="var(--ivory)">Clientes presentados</text><text x="718" y="97" font-size="13" fill="var(--muted)">12% por venta · −500 € por cliente</text></g>
+        <g><rect x="700" y="124" width="280" height="60" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="718" y="150" font-size="15.5" font-weight="600" fill="var(--ivory)">Talento titulado</text><text x="718" y="171" font-size="13" fill="var(--muted)">Cantera para todos los proyectos</text></g>
+        <g><rect x="700" y="198" width="280" height="60" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="718" y="224" font-size="15.5" font-weight="600" fill="var(--ivory)">Club Closer Search</text><text x="718" y="245" font-size="13" fill="var(--muted)">50 € al mes por miembro</text></g>
+        <g><rect x="700" y="272" width="280" height="60" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="718" y="298" font-size="15.5" font-weight="600" fill="var(--ivory)">Formación práctica</text><text x="718" y="319" font-size="13" fill="var(--muted)">100 € por alumno · mín. 1.500 €</text></g>
+        <g><rect x="700" y="346" width="280" height="60" rx="8" fill="var(--void)" stroke="var(--line)"/><text x="718" y="372" font-size="15.5" font-weight="600" fill="var(--ivory)">Comisión por alumno</text><text x="718" y="393" font-size="13" fill="var(--muted)">10% de 980 € · unos 98 €</text></g>
+      </g>
+      <g fill="none" stroke="var(--gold)" stroke-width="1.3" opacity=".75">
+        <path d="M270 87 C330 87 330 190 378 200" marker-end="url(#arr)"/>
+        <path d="M270 181 C320 181 330 215 378 218" marker-end="url(#arr)"/>
+        <path d="M270 275 C320 275 330 240 378 238" marker-end="url(#arr)"/>
+        <path d="M270 369 C330 369 330 270 378 262" marker-end="url(#arr)"/>
+        <path d="M620 190 C660 190 660 80 698 80" marker-end="url(#arr)"/>
+        <path d="M620 210 C660 210 660 154 698 154" marker-end="url(#arr)"/>
+        <path d="M620 228 L698 228" marker-end="url(#arr)"/>
+        <path d="M620 246 C660 246 660 302 698 302" marker-end="url(#arr)"/>
+        <path d="M620 266 C660 266 660 376 698 376" marker-end="url(#arr)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="eco-legend"><span><i style="background:var(--gold)"></i>Vía con más potencial: AEEN → clientes</span><span>Hipótesis de ingresos en la sección "Números"</span></div>
+</div></section>
+
+<section class="band" id="alcance"><div class="container">
+  <div class="head"><span class="eyebrow">Qué hay sobre la mesa</span><h2>El alcance <em>real</em> del acuerdo</h2></div>
+  <p class="point">Con la información de Inés, AEEN y ANCYPEL, el acuerdo tiene seis vías de valor. Tres traen clientes, dos traen talento e ingresos recurrentes, y una añade un pequeño ingreso por matrícula.</p>
+  <div class="vias"><article class="via"><div class="via-top"><h4>Red de clínicas y empresas de Clinical Trainers</h4><div class="via-tags"><span class="pill hi">Alta</span><span class="when">Nov 2026</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>Clínicas de prácticas y consultoría, y ahora empresas de cualquier sector</p></div><div><span class="lbl">Qué gana Closer Search</span><p>Clientes presentados; 12% de cada venta menos 500 € por cliente</p></div></div></article><article class="via"><div class="via-top"><h4>Escuelas de AEEN</h4><div class="via-tags"><span class="pill mid">Media</span><span class="when">Ene–mar 2027</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>91 escuelas de negocio que venden másteres y posgrados a particulares</p></div><div><span class="lbl">Qué gana Closer Search</span><p>Clientes con venta de alto ticket, el encaje más parecido a un infoproductor</p></div></div></article><article class="via"><div class="via-top"><h4>Centros de ANCYPEL</h4><div class="via-tags"><span class="pill mid">Media</span><span class="when">Ene–jun 2027</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>Unas 130 entidades de e-learning, muchas con formación bonificada para empresas</p></div><div><span class="lbl">Qué gana Closer Search</span><p>Clientes, pero con venta más institucional y equipos de matrícula propios</p></div></div></article><article class="via"><div class="via-top"><h4>Talento titulado</h4><div class="via-tags"><span class="pill hi">Alta</span><span class="when">Desde la firma</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>Titulados del curso de ventas (genérico, sirve para todos los sectores)</p></div><div><span class="lbl">Qué gana Closer Search</span><p>Cantera continua y doble acreditación para vuestros equipos</p></div></div></article><article class="via"><div class="via-top"><h4>Club Closer Search</h4><div class="via-tags"><span class="pill hi">Alta</span><span class="when">Desde nov 2026</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>Titulados con sello y closers que quieran el curso a 980 €</p></div><div><span class="lbl">Qué gana Closer Search</span><p>50 €/mes por miembro; el curso con descuento es un argumento muy fuerte</p></div></div></article><article class="via"><div class="via-top"><h4>Comisión por alumno</h4><div class="via-tags"><span class="pill mid">Media</span><span class="when">Desde la firma</span></div></div><div class="via-body"><div><span class="lbl">A quién llega</span><p>Closers y candidatos que se matriculen con vuestro código</p></div><div><span class="lbl">Qué gana Closer Search</span><p>10% de 980 €: unos 98 € por matrícula</p></div></div></article></div>
+</div></section>
+
+<section class="band alt" id="ranking"><div class="container">
+  <div class="head"><span class="eyebrow">Prioridad</span><h2>Dónde está <em>el valor</em></h2></div>
+  <p class="point">El comité ordena las vías por el beneficio que pueden dar a Closer Search en los próximos 12 meses, teniendo en cuenta lo probable que es cada una.</p>
+  <div class="rank">
+    <div class="r top"><span class="pos">1</span><div><h4>Escuelas de AEEN</h4><p>Venta de alto ticket a particulares, Inés es asociada y son 91 escuelas. Es la vía con más potencial.</p></div><div class="meter"><div class="bar-l"><span>Potencial</span><span>9/10</span></div><div class="bar"><i style="width:90%"></i></div></div></div>
+    <div class="r"><span class="pos">2</span><div><h4>Red de clínicas y empresas</h4><p>La más rápida de activar: piloto en noviembre y presentación directa de Inés.</p></div><div class="meter"><div class="bar-l"><span>Potencial</span><span>8/10</span></div><div class="bar"><i style="width:80%"></i></div></div></div>
+    <div class="r"><span class="pos">3</span><div><h4>Centros de ANCYPEL</h4><p>Grande y con acceso real, porque Inés es asociada. Queda por detrás de AEEN por el tipo de venta: más institucional y con equipos de matrícula propios.</p></div><div class="meter"><div class="bar-l"><span>Potencial</span><span>7/10</span></div><div class="bar"><i style="width:70%"></i></div></div></div>
+    <div class="r"><span class="pos">4</span><div><h4>Talento y Club</h4><p>No da grandes ingresos directos, pero resuelve la mayor limitación: tener closers suficientes.</p></div><div class="meter"><div class="bar-l"><span>Potencial</span><span>7/10</span></div><div class="bar"><i style="width:70%"></i></div></div></div>
+    <div class="r"><span class="pos">5</span><div><h4>Comisión por alumno</h4><p>Ingreso pequeño. Su valor está en mantener el incentivo de ambas partes.</p></div><div class="meter"><div class="bar-l"><span>Potencial</span><span>3/10</span></div><div class="bar"><i style="width:30%"></i></div></div></div>
+  </div>
+</div></section>
+
+<section class="band" id="numeros"><div class="container">
+  <div class="head"><span class="eyebrow">Números · año 1</span><h2>Cuánto puede <em>aportar</em></h2></div>
+  <p class="point">En el escenario base, la alianza podría aportar a Closer Search unos 186.000 € de margen bruto el primer año. Casi todo procede de los clientes presentados; el Club y las matrículas suman, pero son secundarios.</p>
+  <h3>Hipótesis</h3>
+  <div class="prose"><ul>
+    <li>Cada cliente presentado vende de media 8 ventas al mes con un ticket de 3.000 € y está activo 6 meses de media en el año 1, porque entran de forma escalonada.</li>
+    <li>Closer Search se queda el 12% de cada venta (la clínica o escuela paga el 20% y el closer recibe el 8%) y paga 500 € a Clinical Trainers por cliente.</li>
+    <li>Cada cliente aporta así unos 16.780 € netos en el año 1.</li>
+    <li>Club a 50 € al mes, con los miembros activos una media de 6 meses. Matrículas a 98 € de comisión cada una.</li>
+  </ul></div>
+  <div class="tbl"><table>
+    <tr><th>Fuente</th><th class="n">Prudente</th><th class="n">Base</th><th class="n">Optimista</th></tr>
+    <tr><td>Clientes presentados (clínicas, empresas, AEEN, ANCYPEL)</td><td class="n">4 clientes · 67.120 €</td><td class="n">10 clientes · 167.800 €</td><td class="n">20 clientes · 335.600 €</td></tr>
+    <tr><td>Club Closer Search</td><td class="n">20 miembros · 6.000 €</td><td class="n">50 · 15.000 €</td><td class="n">100 · 30.000 €</td></tr>
+    <tr><td>Comisión por alumno (98 €)</td><td class="n">12 · 1.176 €</td><td class="n">36 · 3.528 €</td><td class="n">72 · 7.056 €</td></tr>
+    <tr class="total"><td>Total margen bruto año 1</td><td class="n">74.296 €</td><td class="n">186.328 €</td><td class="n">372.656 €</td></tr>
+    <tr><td>Pagado a Clinical Trainers por clientes</td><td class="n">2.000 €</td><td class="n">5.000 €</td><td class="n">10.000 €</td></tr>
+    <tr><td>Closers necesarios (2–3 por cliente)</td><td class="n">8–12</td><td class="n">20–30</td><td class="n">40–60</td></tr>
+  </table></div>
+  <p class="muted">Margen bruto antes de repartir con setters y dirección de proyectos y antes de impuestos. Reparto de clientes en el escenario base: 6 clínicas o empresas de la red, 3 escuelas de AEEN y 1 centro de ANCYPEL. Todas las cifras son hipótesis que el piloto debe validar.</p>
+</div></section>
+
+<section class="band alt" id="comite"><div class="container">
+  <div class="head"><span class="eyebrow">El comité</span><h2>Lo que opina <em>cada experto</em></h2></div>
+  <div class="board">
+    <div class="m opt"><div class="who"><div class="av">OP</div><div><h4>La Optimista</h4><div class="role">Mirada de potencial</div></div><span class="score">9,5</span></div>
+      <p class="say">"Inés no nos ofrece una escuela: nos abre la puerta a todo el sector de la formación."</p>
+      <ul><li>AEEN y ANCYPEL juntas suman unos 220 centros que venden formación.</li><li>Con 20 clientes, Closer Search triplica su cartera en un año.</li><li>El curso a 980 € convierte el Club en algo que la gente quiere pagar.</li></ul></div>
+
+    <div class="m real"><div class="who"><div class="av">RE</div><div><h4>El Realista</h4><div class="role">Mirada de ejecución</div></div><span class="score">7,5</span></div>
+      <p class="say">"La demanda puede llegar más rápido que nuestra capacidad de formar equipos."</p>
+      <ul><li>El escenario base pide entre 20 y 30 closers activos.</li><li>Patri y María no pueden dirigir 10 clientes a la vez sin más estructura.</li><li>Hay que crecer por fases: no aceptar más clientes de los que se puedan atender bien.</li></ul></div>
+
+    <div class="m crit"><div class="who"><div class="av">CR</div><div><h4>La Crítica</h4><div class="role">Abogada del diablo</div></div><span class="score">6,5</span></div>
+      <p class="say">"Todo depende de una sola persona y de una relación que tiene una semana."</p>
+      <ul><li>Si Inés se enfría o sale de Clinical Trainers, se cae el canal.</li><li>Ser asociada no es lo mismo que tener influencia: hay que ver cuántas puertas abre de verdad.</li><li>La ficha del curso muestra 0 alumnos: hay que ver datos reales antes de vender el título como argumento.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">EA</div><div><h4>Estratega de alianzas</h4><div class="role">Encaje entre empresas</div></div><span class="score">9</span></div>
+      <p class="say">"Inés es la CEO y ya actúa como aliada. Es el momento de fijar el marco amplio."</p>
+      <ul><li>Cambiar "clínica derivada" por "empresa derivada", de cualquier sector.</li><li>Inés es asociada de AEEN y ANCYPEL: meter las dos redes dentro del marco ya, con presentaciones concretas.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">EC</div><div><h4>Estratega de crecimiento</h4><div class="role">Mercado y posicionamiento</div></div><span class="score">9</span></div>
+      <p class="say">"Las escuelas de negocio son nuestro siguiente gran vertical."</p>
+      <ul><li>Venden másteres a particulares con llamada de admisión: es vuestro método de venta en estado puro.</li><li>Un caso de éxito con una escuela de AEEN abre las otras 90.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">FI</div><div><h4>Finanzas</h4><div class="role">Economía del acuerdo</div></div><span class="score">8,5</span></div>
+      <p class="say">"Los 500 € por cliente se recuperan con dos ventas. El riesgo económico es bajo."</p>
+      <ul><li>Mantener el 10% sobre 980 €: no merece la pena renegociarlo.</li><li>Antes de aceptar a cada cliente, aplicar el criterio de cliente ideal para no pagar 500 € por clientes que no venden.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">ED</div><div><h4>Experto en sector educativo</h4><div class="role">Escuelas y e-learning</div></div><span class="score">8</span></div>
+      <p class="say">"Muchos centros ya tienen equipo de admisiones. Hay que entrar como refuerzo, no como sustituto."</p>
+      <ul><li>Oferta para escuelas: mejorar la conversión de leads, dirigir y formar su equipo, y cobrar solo por matrícula.</li><li>En ANCYPEL distinguir entre venta a particulares y formación bonificada para empresas.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">SA</div><div><h4>Experto en sector salud</h4><div class="role">Clínicas</div></div><span class="score">8</span></div>
+      <p class="say">"Las clínicas siguen siendo el piloto ideal: ciclo corto y resultados visibles."</p>
+      <ul><li>Mantener el piloto de 3 clínicas en noviembre como prueba del modelo.</li><li>Usar sus resultados como caso de éxito para AEEN.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">GT</div><div><h4>Gestión de Talento</h4><div class="role">Cantera y Club</div></div><span class="score">9</span></div>
+      <p class="say">"El curso a 980 € y el Club pueden ser nuestra fábrica de closers."</p>
+      <ul><li>Dar acceso al precio especial también a candidatos en evaluación, para captar talento.</li><li>Controlarlo con un código que solo da Closer Search.</li></ul></div>
+
+    <div class="m"><div class="who"><div class="av">NG</div><div><h4>Experto en negociación</h4><div class="role">Cierre del martes</div></div><span class="score">8,5</span></div>
+      <p class="say">"Ella ha dado primero. El martes toca cerrar el marco amplio, no solo las clínicas."</p>
+      <ul><li>Aceptar los 980 € sin regatear: genera confianza.</li><li>Pedir a cambio la presentación a 5 escuelas de AEEN en los próximos 60 días.</li></ul></div>
+  </div>
+</div></section>
+
+<section class="band" id="cualitativo"><div class="container">
+  <div class="head"><span class="eyebrow">Más allá del dinero</span><h2>Lo que gana <em>Closer Search</em></h2></div>
+  <div class="two">
+    <div><h3>Posicionamiento</h3><ul>
+      <li>Pasar de "consultora para infoproductores" a referente de equipos de cierre en el sector de la formación y la salud.</li>
+      <li>Credibilidad universitaria: equipos con título de EUNEIZ y sello Premium.</li>
+      <li>Presencia en dos asociaciones nacionales del sector.</li></ul></div>
+    <div><h3>Negocio</h3><ul>
+      <li>Clientes presentados por alguien de confianza: venta más corta y sin prospección en frío.</li>
+      <li>Diversificación: menos dependencia de unos pocos infoproductores.</li>
+      <li>Un modelo replicable con otras escuelas y asociaciones.</li></ul></div>
+    <div><h3>Talento</h3><ul>
+      <li>Cantera continua de titulados válidos para todos los verticales.</li>
+      <li>El curso a 980 € como argumento para captar y fidelizar closers.</li>
+      <li>Club con un beneficio que nadie más ofrece.</li></ul></div>
+    <div><h3>Marca</h3><ul>
+      <li>Presencia en la ficha del curso y en los canales de Clinical Trainers.</li>
+      <li>Casos de éxito en sectores serios (salud y educación).</li>
+      <li>Contenido y eventos conjuntos, como La Gran Sala.</li></ul></div>
+  </div>
+</div></section>
+
+
+<section class="band alt" id="perfiles"><div class="container">
+  <div class="head"><span class="eyebrow">Talento necesario</span><h2>Los perfiles que <em>va a necesitar</em> la alianza</h2></div>
+  <p class="point">Cada vía de la alianza pide un vendedor distinto. Con un mismo método de venta, el comité define seis perfiles: cinco de venta y uno de dirección. En el escenario base hacen falta entre 20 y 30 personas, y la mayoría deben ser closers de venta a particulares.</p>
+
+  <div class="tbl"><table>
+    <tr><th>Perfil</th><th>Dónde trabaja</th><th>Tipo de venta</th><th class="n">Base año 1</th></tr>
+    <tr><td><strong>Setter digital</strong></td><td>Todos los clientes</td><td>Primer contacto y cita</td><td class="n">6–8</td></tr>
+    <tr><td><strong>Closer de alto ticket</strong></td><td>Escuelas AEEN, empresas, infoproductores</td><td>Particular, por videollamada</td><td class="n">8–10</td></tr>
+    <tr><td><strong>Coordinador/a de tratamientos</strong></td><td>Clínicas</td><td>Paciente, presencial o por teléfono</td><td class="n">3–6</td></tr>
+    <tr><td><strong>Asesor/a de admisiones</strong></td><td>Escuelas de negocio y centros online</td><td>Futuro alumno</td><td class="n">3–4</td></tr>
+    <tr><td><strong>Comercial digital B2B</strong></td><td>Centros ANCYPEL y empresas</td><td>Empresa, ciclo largo</td><td class="n">1–2</td></tr>
+    <tr><td><strong>Jefe/a de equipo</strong></td><td>Coordina 4–6 vendedores</td><td>Dirección y seguimiento</td><td class="n">2–3</td></tr>
+  </table></div>
+
+  <h3>Ficha de cada perfil</h3>
+  <div class="profiles">
+    <article class="pf"><div class="top"><span class="k">PERFIL 1</span><h4>Setter digital</h4><p class="for">Abre la conversación y llena la agenda del closer.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Contacta los leads por WhatsApp, Instagram, email y teléfono, cualifica y agenda la llamada de cierre.</dd></div>
+      <div><dt>Experiencia</dt><dd>Desde cero con formación (Desde Cero) o 6 meses como setter o en atención al cliente.</dd></div>
+      <div><dt>Competencias</dt><dd>Escritura cercana y rápida, constancia, organización y seguimiento sin dejar leads olvidados.</dd></div>
+      <div><dt>Herramientas</dt><dd>CRM, WhatsApp Business, redes sociales y agenda online.</dd></div>
+      <div><dt>Indicadores</dt><dd>Contactos al día, citas agendadas y porcentaje de asistencia a la llamada.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Desde Cero, alumnos del curso de Clinical Trainers en formación y La Sala.</dd></div>
+    </dl></article>
+
+    <article class="pf main"><div class="top"><span class="k">PERFIL 2 · EL MÁS NECESARIO</span><h4>Closer de alto ticket</h4><p class="for">Cierra la venta en una llamada con un particular.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Llamadas de diagnóstico y cierre de programas, másteres y servicios de 1.000 a 10.000 €.</dd></div>
+      <div><dt>Experiencia</dt><dd>Mínimo 1 año cerrando ventas por llamada, con resultados demostrables.</dd></div>
+      <div><dt>Competencias</dt><dd>Escucha, preguntas de diagnóstico, gestión de objeciones sin presión, cierre y disciplina con el guion.</dd></div>
+      <div><dt>Herramientas</dt><dd>Zoom o Meet, CRM, Guía de Ventas de Closer Search y enlaces de pago.</dd></div>
+      <div><dt>Indicadores</dt><dd>Tasa de cierre, ticket medio, cobros efectivos y calidad de la ficha de cada llamada.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Cartera de más de 150 perfiles, Club y titulados del curso con sello Premium.</dd></div>
+    </dl></article>
+
+    <article class="pf"><div class="top"><span class="k">PERFIL 3</span><h4>Coordinador/a de tratamientos</h4><p class="for">El closer de la clínica: acompaña al paciente hasta el sí.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Presenta el presupuesto tras la visita, resuelve dudas de precio y financiación y hace el seguimiento de los presupuestos pendientes.</dd></div>
+      <div><dt>Experiencia</dt><dd>Auxiliar de odontología o estética, o atención al paciente, más formación en venta.</dd></div>
+      <div><dt>Competencias</dt><dd>Trato cercano y tranquilizador, conocimiento de los tratamientos y respeto absoluto al criterio clínico.</dd></div>
+      <div><dt>Herramientas</dt><dd>Software de gestión de la clínica, financieras de pago a plazos y CRM de seguimiento.</dd></div>
+      <div><dt>Indicadores</dt><dd>Presupuestos aceptados, importe aceptado y presupuestos recuperados.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Alumnos auxiliares de Clinical Trainers con el curso de ventas y el sello.</dd></div>
+    </dl></article>
+
+    <article class="pf"><div class="top"><span class="k">PERFIL 4</span><h4>Asesor/a de admisiones</h4><p class="for">Convierte interesados en alumnos matriculados.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Llama a los interesados en un máster o curso, entiende su objetivo profesional, recomienda el programa adecuado y cierra la matrícula.</dd></div>
+      <div><dt>Experiencia</dt><dd>1 año en venta de formación, admisiones o venta por llamada.</dd></div>
+      <div><dt>Competencias</dt><dd>Orientación profesional, explicación clara de programas, becas y financiación, y seguimiento de plazos de matrícula.</dd></div>
+      <div><dt>Herramientas</dt><dd>CRM educativo de la escuela, plataformas de pago y videollamada.</dd></div>
+      <div><dt>Indicadores</dt><dd>Matrículas cerradas, conversión de lead a matrícula y bajas en garantía.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Closers del perfil 2 con formación en el sector educativo.</dd></div>
+    </dl></article>
+
+    <article class="pf"><div class="top"><span class="k">PERFIL 5</span><h4>Comercial digital B2B</h4><p class="for">Vende a empresas, con ciclos más largos.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Prospecta empresas por LinkedIn y email, se reúne con RRHH o dirección y cierra planes de formación o servicios.</dd></div>
+      <div><dt>Experiencia</dt><dd>2 años en venta B2B, idealmente de formación o servicios.</dd></div>
+      <div><dt>Competencias</dt><dd>Venta consultiva, propuestas por escrito, paciencia en ciclos de semanas y relación con varios interlocutores.</dd></div>
+      <div><dt>Herramientas</dt><dd>LinkedIn, CRM B2B, presentaciones y propuestas.</dd></div>
+      <div><dt>Indicadores</dt><dd>Reuniones al mes, propuestas enviadas, contratos firmados e importe.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Perfiles senior de la cartera, cuando entren los primeros centros de ANCYPEL.</dd></div>
+    </dl></article>
+
+    <article class="pf"><div class="top"><span class="k">PERFIL 6</span><h4>Jefe/a de equipo</h4><p class="for">Hace que el equipo venda cada semana.</p></div><dl>
+      <div><dt>Qué hace</dt><dd>Dirige 4 a 6 vendedores, revisa llamadas, hace role plays, controla indicadores e informa al cliente.</dd></div>
+      <div><dt>Experiencia</dt><dd>2 años como closer de alto rendimiento y experiencia dirigiendo o formando a otros.</dd></div>
+      <div><dt>Competencias</dt><dd>Liderazgo, análisis de datos, formación práctica y comunicación con el cliente.</dd></div>
+      <div><dt>Herramientas</dt><dd>CRM, cuadros de indicadores y grabaciones de llamadas.</dd></div>
+      <div><dt>Indicadores</dt><dd>Resultados del equipo, retención de vendedores y satisfacción del cliente.</dd></div>
+      <div><dt>De dónde sale</dt><dd>Closers senior de la cartera. Clave para no saturar a Dirección de Proyectos.</dd></div>
+    </dl></article>
+  </div>
+
+  <h3>Perfil ideal común a todos</h3>
+  <div class="ideal">
+    <div><h4 style="font-size:22px;margin-bottom:10px">Actitud</h4><ul>
+      <li>Escucha antes de hablar y busca entender a la persona.</li>
+      <li>Vende sin presionar y sabe decir que no cuando el cliente no encaja.</li>
+      <li>Constancia y disciplina con el método y el seguimiento.</li>
+      <li>Ética: nunca promete lo que el producto no da.</li></ul></div>
+    <div><h4 style="font-size:22px;margin-bottom:10px">Capacidades</h4><ul>
+      <li>Comunicación clara por escrito y en llamada.</li>
+      <li>Dominio de herramientas digitales: CRM, videollamada, WhatsApp, redes.</li>
+      <li>Aprendizaje rápido de cada producto o sector.</li>
+      <li>Registro ordenado de cada llamada en su ficha.</li></ul></div>
+    <div><h4 style="font-size:22px;margin-bottom:10px">Requisitos</h4><ul>
+      <li>Autónomo, o intención firme de darse de alta en 1–2 meses.</li>
+      <li>Contrato mercantil con Closer Search.</li>
+      <li>Superar El Filtro de los 6.</li>
+      <li>Disponibilidad según el horario del proyecto; español nativo o bilingüe.</li></ul></div>
+  </div>
+  <p class="muted" style="margin-top:22px">El curso de Clinical Trainers (980 € para vuestros closers) es un plus para todos los perfiles, nunca un requisito. El sello Premium se obtiene solo con vuestra evaluación.</p>
+</div></section>
+
+
+<section class="band" id="formacion"><div class="container">
+  <div class="head"><span class="eyebrow">Nueva vía</span><h2>Closer Search <em>como formador</em></h2></div>
+  <p class="point">Proponemos que un miembro de Closer Search imparta la parte práctica del curso de ventas de Clinical Trainers. El curso gana lo que hoy le falta, que son profesores con nombre y práctica real, y Closer Search ve en acción a cada alumno antes de seleccionarlo.</p>
+  <div class="prose"><p>Esta vía se descartó al principio, cuando la alianza era solo un canal de clínicas. Con el curso a 980 € para vuestros closers, el acceso a AEEN y ANCYPEL y la ficha del curso sin profesorado, el comité recomienda recuperarla. La parte teórica la sigue impartiendo Clinical Trainers y el título lo sigue certificando EUNEIZ.</p></div>
+
+  <h3>Tres formas de participar</h3>
+  <div class="opts">
+    <div class="opt"><span class="k">OPCIÓN A</span><h4>Módulo 5</h4><p>Closer Search imparte el módulo "Casos Prácticos y Cierre de Formación" completo.</p><p class="h">Menos carga · encaje directo en el temario</p></div>
+    <div class="opt main"><span class="k">OPCIÓN B · RECOMENDADA</span><h4>Programa práctico Closer Search</h4><p>Bloque práctico de 8 semanas en directo, a lo largo del curso, con role plays, revisión de llamadas y examen práctico final.</p><p class="h">Más valor para el alumno · más control del talento</p></div>
+    <div class="opt"><span class="k">OPCIÓN C</span><h4>Masterclasses</h4><p>4 sesiones al año con David Martínez y closers senior, abiertas a alumnos y antiguos alumnos.</p><p class="h">Mínimo compromiso · útil como prueba</p></div>
+  </div>
+
+  <h3>Programa práctico Closer Search · 8 semanas</h3>
+  <div class="prose"><p>Formato: una sesión en directo de 2 horas a la semana, más 2 horas de práctica tutorizada en grupos de 6 alumnos. En total, 32 horas, que se integran dentro de las 700 horas del curso sin alargarlo.</p></div>
+  <div class="weeks">
+    <div class="wk"><div><b>1</b><span>SEMANA</span></div><div><h4>El rol del closer</h4><p>Venta de alto ticket, ética y el método de venta de Closer Search. Cómo es un día real en un proyecto.</p></div></div>
+    <div class="wk"><div><b>2</b><span>SEMANA</span></div><div><h4>Preparar la llamada</h4><p>Ficha del lead, CRM, investigación previa y setting por WhatsApp.</p></div></div>
+    <div class="wk"><div><b>3</b><span>SEMANA</span></div><div><h4>Apertura y diagnóstico</h4><p>Encuadre de la llamada y preguntas que descubren el problema real.</p></div></div>
+    <div class="wk"><div><b>4</b><span>SEMANA</span></div><div><h4>Presentar la oferta</h4><p>Conectar la solución con lo que el cliente ha dicho. Precio y formas de pago.</p></div></div>
+    <div class="wk"><div><b>5</b><span>SEMANA</span></div><div><h4>Objeciones sin presión</h4><p>Las objeciones más frecuentes por sector y cómo reencuadrarlas.</p></div></div>
+    <div class="wk"><div><b>6</b><span>SEMANA</span></div><div><h4>Cierre y seguimiento</h4><p>Cierre, cobro, onboarding y reenganche de leads fríos.</p></div></div>
+    <div class="wk"><div><b>7</b><span>SEMANA</span></div><div><h4>Venta por sector</h4><p>Infoproductos, clínicas, escuelas de negocio y empresas: qué cambia en cada uno.</p></div></div>
+    <div class="wk key"><div><b>8</b><span>SEMANA</span></div><div><h4>Examen práctico</h4><p>Llamada simulada evaluada por Closer Search. Sirve como prueba práctica de El Filtro de los 6.</p></div></div>
+  </div>
+
+  <h3>Quién imparte y cómo</h3>
+  <div class="two">
+    <div><h3>Profesorado</h3><ul>
+      <li>Responsable: la Dirección de Formación de Closer Search (por designar).</li>
+      <li>Closers senior en activo como profesores de práctica.</li>
+      <li>David Martínez en la sesión de apertura y en el examen final.</li>
+      <li>Requisito: 2 años como closer de alto rendimiento y experiencia formando.</li></ul></div>
+    <div><h3>Metodología</h3><ul>
+      <li>Sesiones en directo por videollamada, grabadas para el campus.</li>
+      <li>Role plays en grupos pequeños con casos de proyectos reales, siempre anonimizados.</li>
+      <li>Guía de Ventas de práctica y fichas de llamada en cada sesión.</li>
+      <li>Evaluación continua y nota final que comparte Closer Search con el alumno.</li></ul></div>
+  </div>
+
+  <h3>Beneficio para Closer Search</h3>
+  <div class="prose"><p>Proponemos cobrar 100 € por alumno de cada edición, con un mínimo de 1.500 € por edición. Es sencillo de liquidar, crece con las ventas del curso y protege vuestro tiempo cuando la edición tiene pocos alumnos.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Escenario año 1</th><th class="n">Ediciones</th><th class="n">Alumnos por edición</th><th class="n">Honorarios</th></tr>
+    <tr><td>Prudente</td><td class="n">2</td><td class="n">10</td><td class="n">3.000 €</td></tr>
+    <tr class="total"><td>Base</td><td class="n">2</td><td class="n">25</td><td class="n">5.000 €</td></tr>
+    <tr><td>Optimista</td><td class="n">4</td><td class="n">30</td><td class="n">12.000 €</td></tr>
+  </table></div>
+  <p class="muted">En el escenario prudente se aplica el mínimo de 1.500 € por edición. Alternativa si Clinical Trainers prefiere pagar por horas: unos 75 € por hora en directo (unos 2.400 € por edición de 32 horas). Este ingreso se suma al 10% por los alumnos que llevéis al curso.</p>
+
+  <div class="two" style="margin-top:20px">
+    <div><h3>Lo que vale más que los honorarios</h3><ul>
+      <li>Veis trabajar a cada alumno durante 8 semanas: la mejor selección posible.</li>
+      <li>El examen final alimenta El Filtro de los 6 y acelera el sello Premium.</li>
+      <li>Vuestro nombre dentro de un curso universitario, con profesores con nombre propio.</li>
+      <li>El contenido se reutiliza en el Club y en Desde Cero.</li>
+      <li>Un curso más práctico vende más, y eso aumenta vuestra comisión por alumno.</li></ul></div>
+    <div><h3>Lo que hay que vigilar</h3><ul>
+      <li>Tiempo del equipo: hace falta un responsable de formación antes de la primera edición.</li>
+      <li>EUNEIZ puede tener que aprobar al profesorado: Clinical Trainers debe confirmarlo.</li>
+      <li>Propiedad del contenido: los materiales son de Closer Search; Clinical Trainers tiene licencia de uso solo mientras dure el acuerdo.</li>
+      <li>Coherencia con el Club: la formación del Club sigue incluida en la cuota y nunca se cobra aparte.</li></ul></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="riesgos"><div class="container">
+  <div class="head"><span class="eyebrow">Límites</span><h2>Lo que puede <em>frenarlo</em></h2></div>
+  <div class="tbl just"><table>
+    <tr><th>Límite</th><th>Impacto</th><th>Cómo gestionarlo</th></tr>
+    <tr><td>Capacidad para formar equipos</td><td><span class="pill lo">Alto</span></td><td>Crecer por fases, reforzar Dirección de Proyectos y usar el curso y el Club como cantera</td></tr>
+    <tr><td>Dependencia de Inés</td><td><span class="pill mid">Medio</span></td><td>Acuerdo firmado con la empresa, otro interlocutor en Clinical Trainers y relación directa con las escuelas</td></tr>
+    <tr><td>Acceso a AEEN y ANCYPEL menor de lo esperado</td><td><span class="pill mid">Medio</span></td><td>Pedir presentaciones concretas con fecha, no solo apoyo general</td></tr>
+    <tr><td>Escuelas con equipo de admisiones propio</td><td><span class="pill mid">Medio</span></td><td>Oferta de refuerzo y dirección, cobrando solo por matrícula</td></tr>
+    <tr><td>Clientes que no venden</td><td><span class="pill mid">Medio</span></td><td>Criterio de cliente ideal y diagnóstico antes de firmar; pago a Clinical Trainers solo con 30 días activos</td></tr>
+    <tr><td>Curso con poca visibilidad (0 alumnos en la web)</td><td><span class="pill hi">Bajo</span></td><td>Pedir datos reales y ayudar a mejorar la ficha</td></tr>
+    <tr><td>SL sin constituir</td><td><span class="pill mid">Medio</span></td><td>Firmar "en constitución" con validación de la gestoría, o tras la escritura</td></tr>
+  </table></div>
+</div></section>
+
+<section class="band" id="martes"><div class="container">
+  <div class="head"><span class="eyebrow">Martes 6 de octubre · 10:00</span><h2>Lo que hay que <em>cerrar</em></h2></div>
+  <p class="point">El comité recomienda salir de la reunión con el marco amplio acordado y con un compromiso concreto sobre AEEN, no solo con el piloto de clínicas.</p>
+  <div class="asks">
+    <div><div><h4>Aceptar el curso a 980 €</h4><p>Para closers con contrato, miembros del Club y candidatos en evaluación, con código de Closer Search. 10% de comisión sobre ese precio. Nunca obligatorio.</p></div></div>
+    <div><div><h4>"Empresa derivada", no solo clínica</h4><p>Cualquier sector, 500 € por empresa que firme y siga activa 30 días, con criterio de cliente ideal.</p></div></div>
+    <div><div><h4>Compromiso con AEEN</h4><p>Presentación a 5 escuelas en 60 días, empezando por las que venden másteres a particulares.</p></div></div>
+    <div><div><h4>Compromiso con ANCYPEL</h4><p>Presentación a 3 centros que vendan a particulares en 90 días, o una sesión con asociados. Entran como "empresa derivada"; un acuerdo con la propia asociación, más adelante.</p></div></div>
+    <div><div><h4>Piloto de 3 clínicas en noviembre</h4><p>Nombres de las clínicas y fecha de los diagnósticos.</p></div></div>
+    <div><div><h4>Datos del curso</h4><p>Alumnos reales, ECTS, requisitos de acceso y autorización de EUNEIZ para mencionar el título.</p></div></div>
+    <div><div><h4>Proponer el programa práctico</h4><p>Closer Search imparte un bloque práctico de 8 semanas dentro del curso, a 100 € por alumno con un mínimo de 1.500 € por edición. Confirmar si EUNEIZ debe aprobar al profesorado.</p></div></div>
+    <div><div><h4>Fecha de firma</h4><p>Antes del 30 de octubre, con la carta de acuerdo actualizada.</p></div></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="container"><span>Closer Search · Evaluación del comité · Documento interno</span><span>Fuentes: ficha del curso de Clinical Trainers, aeen.org y ancypel.es (consultadas el 5 de octubre de 2026)</span></div></footer>
+<script>
+(function(){var b=document.getElementById('progress');function u(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;b.style.width=(m>0?(h.scrollTop/m*100):0)+'%';}document.addEventListener('scroll',u,{passive:true});u();})();
+</script>
